@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next gemini" lang="中文, English, 日本语">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="我玩的网游很少，而且都只玩免费网游。目前为止，曾经坚持玩下去的网游就只有洛奇、洛奇英雄传、Phantasy Star Online 2、鬼斬和剑灵。其中洛奇和洛英玩了比较短的一段时间后已弃，原因是玩得太寂寞。重点说说个人对后三个游戏的感受好了。受游戏知识和运行环境的影响，个人观点难免有所偏差。简单介绍（非常短，详细请自行Google去）  PSO2：如果我说Phantasy Star的中文名字是梦">
+<meta name="keywords" content="pso2,鬼斬,剑灵,MMORPG">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PSO2&#x2F;鬼斬&#x2F;剑灵，网游个人分析和感受">
+<meta property="og:url" content="https://www.e10t.net/pso2-onigiri-bladesoul-personal-comment/index.html">
+<meta property="og:site_name" content="exoticknight&#39;s blog">
+<meta property="og:description" content="我玩的网游很少，而且都只玩免费网游。目前为止，曾经坚持玩下去的网游就只有洛奇、洛奇英雄传、Phantasy Star Online 2、鬼斬和剑灵。其中洛奇和洛英玩了比较短的一段时间后已弃，原因是玩得太寂寞。重点说说个人对后三个游戏的感受好了。受游戏知识和运行环境的影响，个人观点难免有所偏差。简单介绍（非常短，详细请自行Google去）  PSO2：如果我说Phantasy Star的中文名字是梦">
+<meta property="og:locale" content="中文, English, 日本语">
+<meta property="og:image" content="http://s13.sinaimg.cn/mw690/0020TQz1gy6FaGSjd6c3c">
+<meta property="og:image" content="http://s1.sinaimg.cn/mw690/0020TQz1gy6FaH1boas40">
+<meta property="og:updated_time" content="2014-04-15T07:40:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PSO2&#x2F;鬼斬&#x2F;剑灵，网游个人分析和感受">
+<meta name="twitter:description" content="我玩的网游很少，而且都只玩免费网游。目前为止，曾经坚持玩下去的网游就只有洛奇、洛奇英雄传、Phantasy Star Online 2、鬼斬和剑灵。其中洛奇和洛英玩了比较短的一段时间后已弃，原因是玩得太寂寞。重点说说个人对后三个游戏的感受好了。受游戏知识和运行环境的影响，个人观点难免有所偏差。简单介绍（非常短，详细请自行Google去）  PSO2：如果我说Phantasy Star的中文名字是梦">
+<meta name="twitter:image" content="http://s13.sinaimg.cn/mw690/0020TQz1gy6FaGSjd6c3c">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="exoticknight's blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://www.e10t.net/pso2-onigiri-bladesoul-personal-comment/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>PSO2/鬼斬/剑灵，网游个人分析和感受 | exoticknight's blog</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-56129336-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-56129336-1');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="中文, English, 日本语">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">exoticknight's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">年寿有时而尽，荣乐止乎其身，二者必至之常期，未若文章之无穷</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/exoticknight" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/pso2-onigiri-bladesoul-personal-comment/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="exoticknight">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="exoticknight's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">PSO2/鬼斬/剑灵，网游个人分析和感受
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2014-01-23 03:57:59" itemprop="dateCreated datePublished" datetime="2014-01-23T03:57:59+08:00">2014-01-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2014-04-15 15:40:42" itemprop="dateModified" datetime="2014-04-15T15:40:42+08:00">2014-04-15</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ACGN/" itemprop="url" rel="index"><span itemprop="name">ACGN</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ACGN/游戏/" itemprop="url" rel="index"><span itemprop="name">游戏</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/pso2-onigiri-bladesoul-personal-comment/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="pso2-onigiri-bladesoul-personal-comment/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>我玩的网游很少，而且都只玩免费网游。目前为止，曾经坚持玩下去的网游就只有洛奇、洛奇英雄传、Phantasy Star Online 2、鬼斬和剑灵。其中洛奇和洛英玩了比较短的一段时间后已弃，原因是玩得太寂寞。重点说说个人对后三个游戏的感受好了。受游戏知识和运行环境的影响，个人观点难免有所偏差。<br>简单介绍（非常短，详细请自行Google去）</p>
+<p><img src="http://s13.sinaimg.cn/mw690/0020TQz1gy6FaGSjd6c3c" alt="pso2"></p>
+<p>PSO2：如果我说Phantasy Star的中文名字是梦幻之星的话，会不会有很多人恍然大悟。游戏类型是ARPG，游戏背景是宇宙，有剑士枪手魔法师等职业选择。</p>
+<p><img src="http://s1.sinaimg.cn/mw690/0020TQz1gy6FaH1boas40" alt="onigiri"></p>
+<p>鬼斬：十分新的一个网游，13.12.12才正式运营。中文资料很少，台服官网介绍是“和风无锁定MMORPG”。何谓无锁定，后面会大概说说。公司是Cyberstep（没听过……），题材大概是奇幻系列，NPC的名字是什么“靜御前”“義經”之类的日本古人名字。</p>
+<p>剑灵：近来在中国很火啊，大概玩过网游的人都知道，不多说了。</p>
+<h3 id="玩的理由-amp-近况"><a href="#玩的理由-amp-近况" class="headerlink" title="玩的理由&amp;近况"></a>玩的理由&amp;近况</h3><p>PSO2：在PSP上玩过《梦幻之星2》，既然出了online版那就去玩一玩，结果发现不错，于是就一直玩了。后来SEGA限制了非日本IP的登录，我没有日本VPN于是玩不了了。近来看到有英文版的主页，估计会出欧服或者美服？不知何年何月了。</p>
+<p>鬼斬：在网上偶然看到介绍，画风十分讨喜，游戏官网也做得很好（是旧的日服官网，参考台服官网），看宣传片也觉得有兴趣。游戏当时宣布是点卡制，后来改成了无料，不玩似乎说不过去（锚定效应起作用了）。只是这货更新很成问题，我挂VPN更新经常失败，也不知道为什么，暂时在靠贴吧的雷锋过日子。但是一旦更新好了，玩起来是不成问题的。</p>
+<p>剑灵：听说跳票了很久的一个游戏，实验室里面曾经有朋友说这个游戏公测了就和我一起玩，现在公测了就只有我下载了来玩。在某个区开了一个号，因为太寂寞了就换了另外一个班里的同学都在的区。现在一边追赶班里的同学的级数一边合武器和首饰中。</p>
+<h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p>PSO2：上手容易，打怪有准星锁定，但是只要打中怪就能扣血。特色是怪是有弱点的，如果能瞄准弱点，则事半功倍，反之事倍功半，所以打boss都是瞄准弱点打。网上有1血挑boss的神触视频。不同类型的武器都有特定的招式，招式需要事先组合好，通过左右键发出。</p>
+<p>鬼斬：无锁定，就是不会帮你将武器的输出自动定位到怪上。虽然也有准星，但是作用只是提示你怪在武器的有效距离以内而已，跟怪物猎人比较像，也是我很欣赏的一点。上手比较难，但是能以技巧挑boss，娱乐性更强。武器的普通招式是固定的，长按或者多次按左键连击发出，但是不同武器是有不同的三种特殊攻击，通过123键或者q键切换，右键发出。</p>
+<p>剑灵：什么都不说了，上手极其容易，等级和武器决定一切。虽然有一个合击和打断，但是比起等级和武器的重要性，实在是比较低。不同职业有不同的招式，1到4和z到v，八种招式随便放，合击要配合空格和f，实在是要人精分……当然有组织的出招才能保证打得怪起不来。</p>
+<h3 id="声音"><a href="#声音" class="headerlink" title="声音"></a>声音</h3><p>PSO2：背景乐不错啊，重点是NPC的配音请了有名的声优！名声优的声音包也是作为商品还是赠品来着。</p>
+<p>鬼斬：不同地图音乐不同，在副本任务中音乐也一直有。感觉很是配合这个游戏的和风风格，反正听起来很舒服。</p>
+<p>剑灵：在记忆中似乎是不错来着，可惜好像只是出现在跑地图的时候。在副本任务中好像没啥背景音乐？我现在是关掉音乐然后在nico听广播来玩的。</p>
+<p>画面（我的机子烂，不敢妄评）<br>PSO2：我只开中级画面，已经很好看了。曾经试过开高级画面，机子温度狂飙升。但是高级画面下的水面超漂亮。</p>
+<p>鬼斬：非常恶心的没有调整画质等的选项，只有全屏和桌面两种切换，切换的时候还会崩溃。</p>
+<p>剑灵：除了不用最低配置外，所有质量调最低，保证操作顺畅。长期二十来帧……<br>PS：我的机子还是只用来编程算了……</p>
+<h3 id="武器系统-使用（太庞大，挑重点和特点说）"><a href="#武器系统-使用（太庞大，挑重点和特点说）" class="headerlink" title="武器系统-使用（太庞大，挑重点和特点说）"></a>武器系统-使用（太庞大，挑重点和特点说）</h3><p>PSO2：可以设定几种武器，战斗的时候随时切换以适应地形和怪物。<br>鬼斬：可以设定最多4种武器，随时切换，因为很有可能一种武器都打烂了还没有打通……</p>
+<p>剑灵：一个职业只能用一种武器，而几乎所有人都是用同一把武器……</p>
+<h3 id="武器系统-进化"><a href="#武器系统-进化" class="headerlink" title="武器系统-进化"></a>武器系统-进化</h3><p>PSO2：大概没有人不会痛恨负责武器研磨的大叔。这游戏打出了武器之后，有时需要鉴定，并且可以通过研磨石使武器逐渐进化上最高的十星级，但是研磨是会失败的，失败的时候那个大叔还会嘲讽说“你的运气真差啊”。有可能你挥霍了99个一组的研磨石，最后武器反而变差了，实在是比较坑。另外也可以给武器附加属性什么的。同一类武器有很多种，不同武器样子也不一样。除了职业限定的武器，你尽管用，自由得很。在游戏里看到的不同人行头和武器都很不一样，个人感很是强烈。</p>
+<p>鬼斬：玩的时间不长，拿到的武器不多。武器掉落后需要给“靜御前”来鉴定，“義經”来强化或者修理。是“武器喂武器”的模式，武器的种类也比较多。</p>
+<p>剑灵：相信几乎每个人都是拿着体制武器的吧，也就是只要职业形同，那么基本上必定是洪门、妖魔这样升上去，毫无新意。武器的成长和进化需要大量其他同种武器的堆砌和各种稀有辅助材料。而这一切的结果，最后也不过是得到了跟别人一模一样的行头和能力，但你要在这个游戏里面生存下去，就不得不这样干。这模式是不是很熟悉？要我说在游戏里面也得这样做也实在太悲哀了。</p>
+<h3 id="辅助系统"><a href="#辅助系统" class="headerlink" title="辅助系统"></a>辅助系统</h3><p>PSO2：一定等级可以拿到一只玛古，就是宠物了，喂各种各样的东西可以成长和进化。因为喂不同的东西进化的路线不同，所以有专门的研究。我是随便喂的了……身上三个地方可以加上辅助道具。战斗前可以加官方提供的buff，而且是要钱的。</p>
+<p>鬼斬：暂时来说无宠无坐骑，估计以后也不会有。只有勾玉这一样辅助道具。比较特殊的还有有时间限制的“酒”。</p>
+<p>剑灵：无宠无坐骑。有一个独特的八卦牌的设定可以得到多种辅助加成，凑齐一套有套装加成。配合跟武器一样是体制式的首饰（喂武器还不够……），基本都是RPG的一贯设定了。</p>
+<h3 id="任务-amp-副本"><a href="#任务-amp-副本" class="headerlink" title="任务&amp;副本"></a>任务&amp;副本</h3><p>PSO2：任务都是在飞船内找NPC领任务然后传送到星球上进行，集中方便，利于同一个服务器的玩家们交流。任务都是一些以“探索”和“讨伐”为主题，这都是由梦幻之星的世界观设定决定的。任务可以选择难度，以适应不同等级的玩家。地图应该都是随机地图，但多走几次可以发现其实地图的走向也是有一定的大趋势的。不定时会出现“紧急任务”，通常就是特殊地图供你练级，个人或者队伍打地图boss。大更新比较频繁，新的地图和boss足够你去玩。</p>
+<p>鬼斬：支线随主线走，做完了就没了。地图副本随便进去刷，可以选择“仁”“皇”“神”三种难度，地图固定，怪物固定。</p>
+<p>剑灵：支线伴随这主线走，有所谓的“每日任务”，其实就是告诉你埋头刷就是了。等级一高就成了机械重复的劳动。有很重要的副本系统，进去之后就是无脑刷，完全脱离了游戏内的时空设定，让人忍不住吐槽主角你究竟是不是为师门报仇的？现在我玩都已经不看剧情的了。</p>
+<p>个人在这里重点说一下，我认为PSO2和鬼斬这样的任务安排比较合情合理，而剑灵给我的感觉就是刷刷刷，无聊。本质同样是刷副本，对比起另外两个副本任务能自然而然地发生，剑灵则是赤裸裸地鼓励玩家去刷。而副本难免会带剧情，剑灵的剧情安排却使得玩家一刷得多就会觉得脱离了游戏。比如我消灭了黑龙寨的那个头目，名字叫做暗黑龙（在这里名字很重要，它是物品的独立标识），第二天我又可以消灭她一遍，嗯？我这算是穿越了吗？打死同一个人两次？如果是打副本更离谱，几分钟就可以打死同一个boss两次了，带来的影响就是重复经历同一段时间的错觉，怎么也分不开。PSO2和鬼斬则不是，怪物都是没有名字的，boss也只是比较强的怪物，这一次打跟下一次可以解释成是不一样的怪。正是其独特的世界观，容易解释任务的重复是内容的重复而非时间的重复。时间的非重复保证了时间流是正常一条的，而反观剑灵则是多条叠加的。如果你看过命运石之门，那么这里的情况就跟凶真一次又一次看着真由里死的情况差不多。最后凶真都说自己麻木了，同样剑灵玩家也麻木了。人会因重复而麻木，重复的内容会越来越不重要，而重复的内容刚好是构筑世界的剧情的话，那么人就越来越脱离这个世界了。</p>
+<h3 id="队伍"><a href="#队伍" class="headerlink" title="队伍"></a>队伍</h3><p>PSO2：随着主线的进行，玩家可以跟某些NPC互动，提升其好感度至一定程度就可以在任务中一起组成队伍，并且同一个地图里面NPC应该是不会出现两个的。更厉害的是不在线好友也是可以作为队友加入的。个人认为这个很赞，可以令玩家更加沉浸在游戏世界中。NPC也会在队伍中扮演好真正队友的角色，会说一些符合情景的对话。每个NPC的性格不同又鲜明，即使玩家是一个人玩也不会寂寞。即使是玩家和玩家之间的交流也是很多的，我在同一个服务器的某个工会qq群上观察到他们经常都组队去玩，在大厅里面交流，整个工会在游戏里面照相留念什么的。</p>
+<p>鬼斬：跟PSO2一样，NPC也是可以增加好感度和加入队伍。不知道这是不是日本网游的特点。可惜暂时玩家人数太少，可供交流的选项也几乎没有，不知之后会不会加入相关的功能。</p>
+<p>剑灵：只有在刷副本和PK的时候需要队伍，队伍就是一个为降低副本难度而存在的临时组织。人员的流动性非常强，有可能你一进入副本，队友就跑了。很多时候，即使是组成了队伍，大家也是各打各的毫无交流，因为进了副本的人，基本就是来刷物品。</p>
+<p>PS：近来在剑灵里面跟着熟人打副本还是挺有意思的，因为我等级太低，打起来比较吃力。</p>
+<h3 id="买卖"><a href="#买卖" class="headerlink" title="买卖"></a>买卖</h3><p>PSO2：需要付费才能开店卖东西。其实没用的都可以用来喂玛古自己消化掉。</p>
+<p>鬼斬：貌似暂时只能跟NPC进行买卖，而且很多时候物品都紧缺，基本没有出售的欲望。</p>
+<p>剑灵：没啥特别的，玩家间可以互相买卖物品。只是拍卖行是个很蛋疼的设定，通常人们缺东西要用了才会想去买，急着要用的东西还要等实在说不过去。</p>
+<h2 id="娱乐性"><a href="#娱乐性" class="headerlink" title="娱乐性"></a>娱乐性</h2><p>PSO2：高。除了任务打怪还有很多其他可以做的。比如可以自己画画作为自定义表情发出去，在大厅经常可以看到有人发漂亮的图画。之前有一段时间很多人会在大厅里面一起跳舞。最令我印象深刻的是有一次大厅的大屏幕在播miku的视频，非常多的玩家坐在一起看，我想那是我在其他网游里从来没有看见过的、如此生活化的景象。舍得花钱的话也可以付费开通自己的房间，装饰上战利品，邀请好友来房间聊天或者游玩。</p>
+<p>鬼斬：暂时不好评价。12号正式运营，19号加入付费物品，系统也不太完善。但是但就剧情和游玩来说还过得去。</p>
+<p>剑灵：低。疯狂刷副本和PK占了整个游戏很大的一部分，如此单调和狂热带来的就是累和空虚。也没有其他有趣的东西，实在是可惜。即使有服装系统，在每个人都在奔波刷怪的时候，又有谁留意你身上穿了啥？不过话说回来，剑灵好像是个PVP的游戏，我暂时也没有打算去玩PK，所以也不敢肯定剑灵就不好玩，只能说我不太合适玩这类游戏。</p>
+<p>免费游戏的大问题是游戏的娱乐性，如果RMB玩家太过“叼”，影响了游戏的平衡性，那么游戏总是会无聊的；而不能激起玩家付费的欲望，那么游戏又是会经营不下去的。这些游戏基本上都能使用金钱来加快角色或者加强角色，而PSO2在基础的武器购买、经验购买和钱财使用上吸引玩家付费外，还有各种相比起来更加注重“精神消费”的无形消费，免费玩家可以玩得开心，付费玩家也付得高兴。剑灵的话，你不想付费，那么就麻木地刷，刷到麻木吧。</p>
+<h3 id="一句话评论"><a href="#一句话评论" class="headerlink" title="一句话评论"></a>一句话评论</h3><p>PSO2：很好玩，但是玩不了。</p>
+<p>鬼斬：可以玩，看以后发展。</p>
+<p>剑灵：可以玩，什么时候受不了就不玩。</p>
+<h3 id="个人喜爱度：PSO2-gt-鬼斬-gt-剑灵"><a href="#个人喜爱度：PSO2-gt-鬼斬-gt-剑灵" class="headerlink" title="个人喜爱度：PSO2&gt;鬼斬&gt;剑灵"></a>个人喜爱度：PSO2&gt;鬼斬&gt;剑灵</h3>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/pso2/" rel="tag"># pso2</a>
+          
+            <a href="/tags/鬼斬/" rel="tag"># 鬼斬</a>
+          
+            <a href="/tags/剑灵/" rel="tag"># 剑灵</a>
+          
+            <a href="/tags/MMORPG/" rel="tag"># MMORPG</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/segmentfault-1111-quiz-walkthrough/" rel="next" title="segmentfault光棍节闯关攻略">
+                <i class="fa fa-chevron-left"></i> segmentfault光棍节闯关攻略
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/nagiasu-relationship-between-charactors/" rel="prev" title="《来自风平浪静的明天》人物关系简单理清和个人简单分析">
+                《来自风平浪静的明天》人物关系简单理清和个人简单分析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">exoticknight</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">51</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/exoticknight" title="GitHub &rarr; https://github.com/exoticknight" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:draco.knight0#@gmail.com" title="E-Mail &rarr; mailto:draco.knight0#@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/ExoticknightD" title="Twitter &rarr; https://twitter.com/ExoticknightD" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://instagram.com/exoticknight" title="Instagram &rarr; https://instagram.com/exoticknight" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.linkedin.com/in/liang-weiwen-1877665a/" title="Linkin &rarr; https://www.linkedin.com/in/liang-weiwen-1877665a/" rel="noopener" target="_blank"><i class="fa fa-fw fa-linkin"></i>Linkin</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://garychang.cn" title="http://garychang.cn" rel="noopener" target="_blank">GaryChang的自留地</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#玩的理由-amp-近况"><span class="nav-number">1.</span> <span class="nav-text">玩的理由&amp;近况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作"><span class="nav-number">2.</span> <span class="nav-text">操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#声音"><span class="nav-number">3.</span> <span class="nav-text">声音</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#武器系统-使用（太庞大，挑重点和特点说）"><span class="nav-number">4.</span> <span class="nav-text">武器系统-使用（太庞大，挑重点和特点说）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#武器系统-进化"><span class="nav-number">5.</span> <span class="nav-text">武器系统-进化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#辅助系统"><span class="nav-number">6.</span> <span class="nav-text">辅助系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务-amp-副本"><span class="nav-number">7.</span> <span class="nav-text">任务&amp;副本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#队伍"><span class="nav-number">8.</span> <span class="nav-text">队伍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#买卖"><span class="nav-number">9.</span> <span class="nav-text">买卖</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#娱乐性"><span class="nav-number"></span> <span class="nav-text">娱乐性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一句话评论"><span class="nav-number">1.</span> <span class="nav-text">一句话评论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#个人喜爱度：PSO2-gt-鬼斬-gt-剑灵"><span class="nav-number">2.</span> <span class="nav-text">个人喜爱度：PSO2&gt;鬼斬&gt;剑灵</span></a></li></ol></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">exoticknight</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script id="ribbon" size="300" alpha="0.6" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://exoticknight.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://www.e10t.net/pso2-onigiri-bladesoul-personal-comment/";
+    this.page.identifier = "pso2-onigiri-bladesoul-personal-comment/";
+    this.page.title = 'PSO2/鬼斬/剑灵，网游个人分析和感受';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://exoticknight.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+  
+</script>
+
+
+
+
+
+  
+    
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js"></script>
+
+<script>
+  var dsqjs = new DisqusJS({
+    api: '' || 'https://disqus.com/api/',
+    apikey: 'mIMUYBvF1jz0H6avrAuQyVdAg6s7bZm5Dy6JDsfTLa2U6cvdInxWpZc1Z33DRYmK',
+    shortname: 'exoticknight'
+  });
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

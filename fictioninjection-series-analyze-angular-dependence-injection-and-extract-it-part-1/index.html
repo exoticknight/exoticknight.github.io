@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next gemini" lang="中文, English, 日本语">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="几年前有一个项目构思，由于技术水平低，当时并没有思考得很清楚，所以一直没怎么着手开始。近来前端很多优秀的库出现了，也让我对那个项目有了新的想法。在写了几个 JavaScript 的项目后我觉得可以尝试开始了。尝试并成功写出一些代码之后，就开（挖）始（坑）了这个系列的博文。 项目是写一个 JavaScript 框架，干什么的在此并不是重点，但是首先需要一个可扩展的模块系统。最简单就是直接用 jQue">
+<meta name="keywords" content="javascript,FictionInjection">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FictionInjection-始动：Angular 依赖注入分析和源码抽取改造（上）">
+<meta property="og:url" content="https://www.e10t.net/fictioninjection-series-analyze-angular-dependence-injection-and-extract-it-part-1/index.html">
+<meta property="og:site_name" content="exoticknight&#39;s blog">
+<meta property="og:description" content="几年前有一个项目构思，由于技术水平低，当时并没有思考得很清楚，所以一直没怎么着手开始。近来前端很多优秀的库出现了，也让我对那个项目有了新的想法。在写了几个 JavaScript 的项目后我觉得可以尝试开始了。尝试并成功写出一些代码之后，就开（挖）始（坑）了这个系列的博文。 项目是写一个 JavaScript 框架，干什么的在此并不是重点，但是首先需要一个可扩展的模块系统。最简单就是直接用 jQue">
+<meta property="og:locale" content="中文, English, 日本语">
+<meta property="og:updated_time" content="2016-11-08T07:58:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FictionInjection-始动：Angular 依赖注入分析和源码抽取改造（上）">
+<meta name="twitter:description" content="几年前有一个项目构思，由于技术水平低，当时并没有思考得很清楚，所以一直没怎么着手开始。近来前端很多优秀的库出现了，也让我对那个项目有了新的想法。在写了几个 JavaScript 的项目后我觉得可以尝试开始了。尝试并成功写出一些代码之后，就开（挖）始（坑）了这个系列的博文。 项目是写一个 JavaScript 框架，干什么的在此并不是重点，但是首先需要一个可扩展的模块系统。最简单就是直接用 jQue">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="exoticknight's blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://www.e10t.net/fictioninjection-series-analyze-angular-dependence-injection-and-extract-it-part-1/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>FictionInjection-始动：Angular 依赖注入分析和源码抽取改造（上） | exoticknight's blog</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-56129336-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-56129336-1');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="中文, English, 日本语">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">exoticknight's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">年寿有时而尽，荣乐止乎其身，二者必至之常期，未若文章之无穷</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/exoticknight" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/fictioninjection-series-analyze-angular-dependence-injection-and-extract-it-part-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="exoticknight">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="exoticknight's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">FictionInjection-始动：Angular 依赖注入分析和源码抽取改造（上）
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2016-05-12 13:56:53" itemprop="dateCreated datePublished" datetime="2016-05-12T13:56:53+08:00">2016-05-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2016-11-08 15:58:22" itemprop="dateModified" datetime="2016-11-08T15:58:22+08:00">2016-11-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/fictioninjection-series-analyze-angular-dependence-injection-and-extract-it-part-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="fictioninjection-series-analyze-angular-dependence-injection-and-extract-it-part-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>几年前有一个项目构思，由于技术水平低，当时并没有思考得很清楚，所以一直没怎么着手开始。近来前端很多优秀的库出现了，也让我对那个项目有了新的想法。在写了几个 JavaScript 的项目后我觉得可以尝试开始了。尝试并成功写出一些代码之后，就开（挖）始（坑）了这个系列的博文。</p>
+<p>项目是写一个 JavaScript 框架，干什么的在此并不是重点，但是首先需要一个可扩展的模块系统。最简单就是直接用 jQuery 扩展的写法，直接将函数等的挂载在一个对象下，不过如此一来模块之间依赖非常多的话，管理起来会十分困难。也可以使用 AMD / CMD 的模块化的方法，不过考虑到 ES2015 已经加入了 import / export 的语法，最好就直接使用。然而使用了 ES2015 的语法之后，仍然使用 AMD 等的语法就显得很别扭，但是又想要依赖注入功能怎么办？</p>
+<p>解决方法是模（fu）仿（zhi）著名的 AngularJS 中关于依赖注入的源代码。</p>
+<p>Angular 有两个版本，1.x 和 2.x，但是 2.x 中，淡化了模块的概念，直接采用 component 和 ES2015 的 import / export 的机制，所以依赖注入已经不太算是亮点了。而且 Angular2 采用 TypeScript 编写，从语法编写上也不适合作为参考。最后选定 1.4.5 版本。</p>
+<blockquote>
+<p>Angular 项目下还有一个不怎么有人知道的 <code>di.js</code> 项目，是从 Angular 中独立出来的依赖注入库，但是从文档来看，也是需要 TypeScript 来使用。</p>
+</blockquote>
+<p>文章较长，给个目录</p>
+<p><a name="catalogue"></a></p>
+<ul>
+<li><a href="#di">实现依赖注入</a></li>
+<li><a href="#api">从 API 入手</a></li>
+<li><a href="#analyze">开始分析</a></li>
+<li><a href="#wrapup">统一包装</a></li>
+<li><a href="#brief">小结</a></li>
+<li><a href="#injector">注入器的奥秘</a></li>
+<li><a href="#unexpected">读源码的意外发现</a></li>
+</ul>
+<p><a name="di"></a></p>
+<h2 id="实现依赖注入↑"><a href="#实现依赖注入↑" class="headerlink" title="实现依赖注入↑"></a>实现依赖注入<a href="#catalogue">↑</a></h2><p>JavaScript 如何实现依赖注入呢？AngularJS 给出了三个解决方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 直接在参数里面声明</span></span><br><span class="line"><span class="built_in">module</span>.service( <span class="function"><span class="keyword">function</span> (<span class="params"> $http </span>) </span>&#123;&#125; )</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用显示注释</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">a.$inject = [<span class="string">'$http'</span>]</span><br><span class="line"><span class="built_in">module</span>.service( a )</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组内联</span></span><br><span class="line"><span class="built_in">module</span>.service( [<span class="string">'$http'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"> http </span>) </span>&#123;&#125;] )</span><br></pre></td></tr></table></figure>
+<p>实际上三个方式都是一样的，只是使用方式不一样，最后都是使用了 JavaScript 的闭包来实现依赖的注入，原理如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">method</span> (<span class="params"> $http </span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"> args </span>) </span>&#123;</span><br><span class="line">        <span class="comment">// $http.get( args )</span></span><br><span class="line">        <span class="comment">// .....</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将依赖作为参数传入 <code>menthod</code> 得到的返回值就是是一个可以调用 <code>$http</code> 服务的函数了。</p>
+<p>像这样 <code>[&#39;$http&#39;, function ( http ) {}]</code> 最后一个元素是函数的结构可以称为一个<strong>‘可注入结构’</strong>。</p>
+<p><a name="api"></a></p>
+<h2 id="从-API-入手↑"><a href="#从-API-入手↑" class="headerlink" title="从 API 入手↑"></a>从 API 入手<a href="#catalogue">↑</a></h2><p>Angular 库的源代码文件非常大，一般基本不会从头开始看。而 API 作为库对外的窗口，从 API 的使用顺藤摸瓜地查找代码是比较好的做法。Angular 模块的使用一般如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// declare module</span></span><br><span class="line"><span class="keyword">const</span> a = angular.module( <span class="string">'a'</span>, [] );</span><br><span class="line"><span class="keyword">const</span> b = angular.module( <span class="string">'b'</span>, [] );</span><br><span class="line"><span class="keyword">const</span> c = angular.module( <span class="string">'c'</span>, [<span class="string">'a'</span>] );</span><br><span class="line"></span><br><span class="line"><span class="comment">// use the module</span></span><br><span class="line">a</span><br><span class="line">.value( <span class="string">'a'</span>, <span class="number">123</span> )</span><br><span class="line">.factory( <span class="string">'a'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">123</span>; &#125; )</span><br><span class="line">.service( <span class="string">'serviceName'</span>, ... )</span><br><span class="line">.directive( <span class="string">'directiveName'</span>, ... )</span><br><span class="line">.filter( <span class="string">'filterName'</span>, ... );</span><br></pre></td></tr></table></figure>
+<p>先创建一个模块，用数组说明它的依赖模块，然后模块就可以调用 <code>value</code>、<code>service</code>、<code>directive</code> 等 API，API 的第一个参数是名字，第二个参数则是值或者函数或者数组，了解 AngularJS 的读者应该知道其实是值或者返回值的构造函数或者包含依赖和构造函数的数组。</p>
+<p>打开 Angular.js ，查找出 <code>module(name, requires, configFn)</code> 函数的定义，位于一个更大的函数 <code>setupModuleLoader</code> 内。<code>setupModuleLoader</code> 为 <code>module</code> 函数编写了一些检测函数和变量。最重要的是 <code>modules</code> 变量，用来保存所有的模块信息。</p>
+<p>下面来分析 <code>module</code> 函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (requires &amp;&amp; modules.hasOwnProperty(name)) &#123;</span><br><span class="line">  modules[name] = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看出如果模块重复创建是会覆盖之前的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** @type &#123;angular.Module&#125; */</span></span><br><span class="line"><span class="keyword">var</span> moduleInstance = &#123;</span><br></pre></td></tr></table></figure>
+<p><code>moduleInstance</code> 就是将会返回出去的模块对象，可以看到里面有 <code>name</code> 和 <code>requires</code> 等属性和 <code>provider</code> 和 <code>factory</code> 等函数。</p>
+<p>里面所有的方法，都是通过调用 <code>invokeLater</code> 和 <code>invokeLaterAndSetModuleName</code> 生成的新函数。新函数的上下文中带有 <code>provider</code> 和 <code>method</code> 信息。比如 <code>service</code> 函数：provider=’$provide’，method=’service’，暂时还看不出来信息有什么用，可以先跳过。新函数在调用的时候会将信息连同调用的参数一起 push 进模块的 <code>_invokeQueue</code> 属性中。</p>
+<p>绕了一大圈，就是知道了：在调用 <code>value</code>、<code>service</code>、<code>provider</code> 这些基本的模块功能函数的时候，其实只是将构造函数和相关信息先保存了下来，根本就没有做初始化模块等工作。</p>
+<p>但是作为一个库必定需要跟 <code>window</code> 或者 <code>document</code> 产生点关系不然无法操作 DOM，根据编写过不少库的经验来看，通常将这样的代码放在最后。于是拉到最后一看，gotcha。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jqLite(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  angularInit(<span class="built_in">document</span>, bootstrap);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>明显意思就是在文档准备完毕的时候调用 <code>angularInit</code>，转到 <code>angularInit</code> 的定义发现调用了 <code>bootstrap(appElement, module ? [module] : [], config);</code>，再转到 <code>bootstrap</code> 的定义，在函数内部又会调用 <code>doBootstrap</code> 函数，一系列的检查之后，调用了 <code>createInjector</code> 函数就结束了，转到 <code>createInjector</code> 的定义一看，有 <code>$provide</code> <code>factory</code> 等字样，说明找对地方了。</p>
+<p><a name="analyze"></a></p>
+<h2 id="开始分析↑"><a href="#开始分析↑" class="headerlink" title="开始分析↑"></a>开始分析<a href="#catalogue">↑</a></h2><p>重点来分析 <code>createInjector</code> 函数。</p>
+<p>函数体大概可以分成四段。</p>
+<p>第一段是定义了 <code>providerCache</code>、<code>instanceCache</code>、<code>providerInjector</code> 和 <code>instanceInjector</code>。最后返回 <code>instanceInjector</code> 对象。<code>providerInjector</code> 和 <code>instanceInjector</code> 各为将 <code>providerCache</code> 和 <code>instanceCache</code> 传入 <code>createInternalInjector</code> 函数的返回值。</p>
+<p>第二段是 provider 函数的定义，用以供初始化时候的调用。</p>
+<p>第三段是 <code>loadModules</code> 函数的定义，作用是，显然，初始化模块。</p>
+<p>第四段是 <code>createInternalInjector</code> 函数的定义，函数返回的是真正的注入器。</p>
+<p>从第一段的代码来看，真正的工作是在 <code>loadModules</code> 函数中，因为 <code>createInternalInjector</code> 函数只返回一个对象，没有 ‘side effect’ 的代码。</p>
+<p><code>loadModules</code> 函数上来就是一个对模块数组的遍历，然后在遍历内取模块的属性 <code>_invokeQueue</code> 来调用 <code>runInvokeQueue</code> 函数对已经缓存下来的对象或方法的构造函数进行处理。</p>
+<p>值得注意的是在做调用 <code>runInvokeQueue</code> 前，有一个递归的调用 <code>loadModules(moduleFn.requires)</code>，表明了在初始化本模块之前，会先初始化依赖的模块。</p>
+<p>到目前为止，可以判明模块初始化的分两个阶段，第一个是：声明模块及其依赖模块 -&gt; 缓存模块变量的构造函数；第二个是：选取一个根模块（对应 AngularJS 中的 ‘app’ 模块） -&gt; 找出其依赖的模块，对于每一个依赖，递归地先初始化其依赖的模块，再初始化自身 -&gt; 处理模块中缓存的变量的构造函数。</p>
+<p>如此采取先缓存所有模块再通过依赖树来初始化的做法虽然看起来繁琐，但是得到一个重要的特性就是声明模块的时候不用关注依赖的顺序，只需要表明依赖就可以了。如果声明的时候就立刻初始化，则必须小心检查所依赖的模块初始化是否已经完成了，然而如此一来就退化成了普通的模块化方法了。<strong>延迟初始化是实现依赖注入的重要过程</strong>。</p>
+<p>模块依赖已经明了，现在来看看作为处理函数的 <code>runInvokeQueue</code> 函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runInvokeQueue</span>(<span class="params">queue</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i, ii;</span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>, ii = queue.length; i &lt; ii; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> invokeArgs = queue[i],</span><br><span class="line">        provider = providerInjector.get(invokeArgs[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">    provider[invokeArgs[<span class="number">1</span>]].apply(provider, invokeArgs[<span class="number">2</span>]);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重要的代码只有两行，<code>provider = providerInjector.get(invokeArgs[0]);</code> 和 <code>provider[invokeArgs[1]].apply(provider, invokeArgs[2]);</code>。</p>
+<p>往上看一下，调用 <code>providerInjector.get</code> 相当于是调用 <code>getService</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getService</span>(<span class="params">serviceName, caller</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (cache.hasOwnProperty(serviceName)) &#123;</span><br><span class="line">    <span class="keyword">if</span> (cache[serviceName] === INSTANTIATING) &#123;</span><br><span class="line">      <span class="keyword">throw</span> $injectorMinErr(<span class="string">'cdep'</span>, <span class="string">'Circular dependency found: &#123;0&#125;'</span>,</span><br><span class="line">                serviceName + <span class="string">' &lt;- '</span> + path.join(<span class="string">' &lt;- '</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cache[serviceName];</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      path.unshift(serviceName);</span><br><span class="line">      cache[serviceName] = INSTANTIATING;</span><br><span class="line">      <span class="keyword">return</span> cache[serviceName] = factory(serviceName, caller);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">      <span class="keyword">if</span> (cache[serviceName] === INSTANTIATING) &#123;</span><br><span class="line">        <span class="keyword">delete</span> cache[serviceName];</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">throw</span> err;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      path.shift();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码虽多，但基本就是干一件事，返回 <code>cache</code> 中的对象，如果没有，就用 <code>factory</code> 创建一个再返回。而调用的对象 <code>providerInjector</code> 的定义来看，<code>cache</code> 就等于：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">providerCache = &#123;</span><br><span class="line">  $provide: &#123;</span><br><span class="line">      provider: supportObject(provider),</span><br><span class="line">      factory: supportObject(factory),</span><br><span class="line">      service: supportObject(service),</span><br><span class="line">      value: supportObject(value),</span><br><span class="line">      constant: supportObject(constant),</span><br><span class="line">      decorator: decorator</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>OK，现在可以知道了那些被延迟初始化的模块元素会在这里被处理了。</p>
+<p>从上文可以知道，<code>invokeArgs[0]</code> 的值为 <code>$provider</code>，<code>invokeArgs[1]</code> 的值为 service / factory 等，<code>invokeArgs[2]</code> 则为参数数组。</p>
+<p>看看以下的示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如此使用</span></span><br><span class="line">m.service( <span class="string">'b'</span>, [<span class="string">'a'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"> a </span>) </span>&#123; <span class="keyword">this</span>.a = a &#125;] );</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化的时候实际上调用</span></span><br><span class="line">$provider.service( <span class="string">'b'</span>, [<span class="string">'a'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"> a </span>) </span>&#123; <span class="keyword">this</span>.a = a &#125;] );</span><br></pre></td></tr></table></figure>
+<p><a name="wrapup"></a></p>
+<h2 id="统一包装↑"><a href="#统一包装↑" class="headerlink" title="统一包装↑"></a>统一包装<a href="#catalogue">↑</a></h2><p>接下来就是分析模块元素（对外表现为 API）的代码了。</p>
+<p>函数有点多，但是还是能看得出来。<code>supportObject</code> 不用管，只是负责转换一下参数，基本的函数是 <code>provider</code>，<code>factory</code> 会调用它，然后 <code>value</code> 和 <code>service</code> 会调用 <code>factory</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">provider</span>(<span class="params">name, provider_</span>) </span>&#123;</span><br><span class="line">  assertNotHasOwnProperty(name, <span class="string">'service'</span>);</span><br><span class="line">  <span class="keyword">if</span> (isFunction(provider_) || isArray(provider_)) &#123;</span><br><span class="line">    provider_ = providerInjector.instantiate(provider_);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (!provider_.$<span class="keyword">get</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> $injectorMinErr(<span class="string">'pget'</span>, <span class="string">"Provider '&#123;0&#125;' must define $get factory method."</span>, name);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> providerCache[name + providerSuffix] = provider_;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第一个判断和第二个判断在 <code>factory</code> 调用的时候是无效的，因为 <code>factory</code> 调用 <code>provider</code> 的时候第二个参数是 Object，而且带有 <code>$get</code> 属性。实际上在本阶段做的是，就是将调用 API 传入的第二个参数（第一个参数是名字）再包装一层对象，再<strong>存储在 <code>providerCache</code> 中</strong>，对象统一拥有 <code>$get</code> 属性，或者说，接口。</p>
+<p>其中，<code>$get</code> 属性是一个可供调用的函数，功能是即使模块元素混杂存储，也能被统一的接口成功调用。</p>
+<p>对于 <code>value</code>，调用 API 的时候传入的是值，因此需要包装成返回这个值的函数才赋值给 <code>$get</code>。</p>
+<p>对于 <code>constant</code>，值是不变的，所以可以看到就直接存储了。</p>
+<p>对于 <code>decorator</code>，同样会定义 <code>$get</code> 属性。</p>
+<p>对于 <code>service</code>，设计上应该生成一个单例并存储下来。不过在这里，仍然是继续包装起来。</p>
+<p>源代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">enforceReturnValue</span>(<span class="params">name, factory</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">enforcedReturnValue</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> result = instanceInjector.invoke(factory, <span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">if</span> (isUndefined(result)) &#123;</span><br><span class="line">      <span class="keyword">throw</span> $injectorMinErr(<span class="string">'undef'</span>, <span class="string">"Provider '&#123;0&#125;' must return a value from $get factory method."</span>, name);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">factory</span>(<span class="params">name, factoryFn, enforce</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> provider(name, &#123;</span><br><span class="line">    $<span class="keyword">get</span>: enforce !== false ? enforceReturnValue(name, factoryFn) : factoryFn</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function service(name, <span class="keyword">constructor</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> factory(name, [<span class="string">'$injector'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$injector</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> $injector.instantiate(<span class="keyword">constructor</span>);</span><br><span class="line">  &#125;]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实际干了如下的事情：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> provider(name, &#123;  <span class="comment">// 跟其他 API 一样调用 provider 函数</span></span><br><span class="line">    $<span class="keyword">get</span>: function () &#123;</span><br><span class="line">      <span class="keyword">return</span> instanceInjector.invoke(</span><br><span class="line">          [<span class="string">'$injector'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$injector</span>) </span>&#123;</span><br><span class="line">              <span class="keyword">return</span> $injector.instantiate(<span class="keyword">constructor</span>);  // 注意 <span class="keyword">constructor</span> 是用户自定义的‘可注入结构’</span><br><span class="line">          &#125;]  // 这又是一个‘可注入结构’，注入的是 '$injector'，实际上就等于 instanceInjector</span><br><span class="line">          , this);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;)( 'serviceName' )</span><br></pre></td></tr></table></figure>
+<p>最后依然将包装好的函数存入 <code>$provider</code>。</p>
+<p>只是为什么还是存储在 <code>$provider</code>，而不是直接调用函数进行初始化？比如 <code>service</code>，为什么还要再包装上一层‘可注入结构’？</p>
+<p><a name="brief"></a></p>
+<h2 id="小结↑"><a href="#小结↑" class="headerlink" title="小结↑"></a>小结<a href="#catalogue">↑</a></h2><p>前文提到，使用延迟初始化实现了模块的依赖注入，使依赖的模块不需要提前定义。</p>
+<p>实际上模块内的元素（factory / service 等）也是可以使用依赖注入的。使用过 AngularJS 的肯定知道定义某一个 controller 的时候可以注入某个 service，然而 controller 和 service 的定义顺序应该不能对代码运行造成影响。</p>
+<p>因此，在此时，模块元素的“构造函数”（注意是用户自定义的那个函数而并非供<br> new 调用的那个函数）还并不具备运行的条件，因为还是需要等依赖的元素初始化。</p>
+<p>于是某种意义上，模块元素就需要<strong>第二重注入</strong>。把‘可注入结构’缓存在 <code>$provider</code> 中实际上就是对应了前文叙述的‘把模块先全部缓存’，包装上一个函数再统一放在 <code>$get</code> 属性下明显是方便供下一阶段的调用。</p>
+<p>万事俱备，只欠注入了。</p>
+<blockquote>
+<p>分析到现阶段，大家应该对平常使用频繁的 <code>service</code>、<code>factory</code> 等函数有了更深的认识了。</p>
+</blockquote>
+<p><a name="injector"></a></p>
+<h2 id="注入器的奥秘↑"><a href="#注入器的奥秘↑" class="headerlink" title="注入器的奥秘↑"></a>注入器的奥秘<a href="#catalogue">↑</a></h2><p>现在把精力放在 <code>createInternalInjector</code> 函数。</p>
+<p>此函数在<a href="#analyze">开始分析</a>一节中已经提到了，作用只是返回一个对象。这个对象就是真正的注入器。</p>
+<p>此函数被调用了两次，分别是得到 <code>providerInjector</code> 和 <code>instanceInjector</code>。</p>
+<p>注入器中重要的函数有三个，分别是 <code>getService</code>、<code>invoke</code> 和 <code>instantiate</code>。</p>
+<p>在<a href="#analyze">开始分析</a>中已经大致介绍了，<code>getService</code> 函数干一件事，返回 <code>cache</code> 中的对象，如果没有，就用 <code>factory</code> 创建一个再返回。</p>
+<p>对于 <code>providerInjector</code>，<code>factory</code> 函数是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params">serviceName, caller</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (angular.isString(caller)) &#123;</span><br><span class="line">    path.push(caller);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">throw</span> $injectorMinErr(<span class="string">'unpr'</span>, <span class="string">"Unknown provider: &#123;0&#125;"</span>, path.join(<span class="string">' &lt;- '</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不难理解，因为在调用 provider 的时候，<code>providerCache</code> 中的函数应该已经在上一个初始化模块阶段中被定义好，如果没找到，那么肯定是调用了未定义的 provider。</p>
+<p>对于 <code>instanceInjector</code>，<code>factory</code> 函数是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params">serviceName, caller</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> provider = providerInjector.get(serviceName + providerSuffix, caller);</span><br><span class="line">  <span class="keyword">return</span> instanceInjector.invoke(provider.$<span class="keyword">get</span>, provider, undefined, serviceName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>instanceCache</code> 本身就是空的，因此在找不到的时候，就去 <code>providerInjector</code> 里找 provider，然后得到其调用的结果，就是真正需要的实例（instance）了。<code>$get</code> 在这里就凸显出统一调用的用处了。</p>
+<p><code>invoke</code> 函数则是处理<strong>‘可注入结构’</strong>和调用函数。从源码中也可以看到组装参数和调用函数，其中也会调用 <code>getService</code> 去得到实参的值来实现注入。从这里的 <code>getService</code> 出发，又有可能调用 <code>factory</code> 继而继续调用 <code>invoke</code> 来得到所依赖的实例，直到没有任何依赖需要实例化，从而完美的实现了自洽。</p>
+<p><code>instantiate</code> 函数是用来处理 ‘service’ 的，是用来模拟 <code>new</code> 的，从代码来看也是如此：复制一个函数的 prototype，绑定为函数的 <code>this</code>，然后调用函数。因此调用 <code>service</code> API 的时候，可以完全使用构造函数的写法，同时也能得到注入特性。</p>
+<p><a name="unexpected"></a></p>
+<h2 id="读源码的意外发现↑"><a href="#读源码的意外发现↑" class="headerlink" title="读源码的意外发现↑"></a>读源码的意外发现<a href="#catalogue">↑</a></h2><p>读源码一般都会有一定的收获，或是技巧上的，或是思想上的。</p>
+<p>当读完了 Angular 的依赖注入的代码后，才发现 Angular 虽然表明支持模块化，但是实际上所谓的模块化只是徒有其名，模块的定义只是方便框架自己做延迟初始化的工作，没有模块之实。模块只是依赖树上的节点，最终生成出来的命名空间跟模块没有一丁点的关系，所有模块里的东西，不论是 ‘value’、’service’ 和 ‘provider’ 等，都是平铺在 <code>instanceCache</code> 里面的。这样的做法明显的一个结果就是命名冲突，两个不同模块里面的同名对象，后实例化的会覆盖掉先实例化的。这一点非常的不好，因为完全不符合模块化的预期结果。</p>
+<p>在下一篇编（fu）写（zhi）注入功能的时候，我会修改这部分使其能满足模块化的实际预期。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/FictionInjection/" rel="tag"># FictionInjection</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/watch-sherlock-the-abominable-bride/" rel="next" title="看《Sherlock: The Abominable Bride》">
+                <i class="fa fa-chevron-left"></i> 看《Sherlock: The Abominable Bride》
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/talk-about-a-question-in-nowcoder/" rel="prev" title="说说牛客上的一道 JavaScript 题目">
+                说说牛客上的一道 JavaScript 题目 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">exoticknight</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">51</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/exoticknight" title="GitHub &rarr; https://github.com/exoticknight" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:draco.knight0#@gmail.com" title="E-Mail &rarr; mailto:draco.knight0#@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/ExoticknightD" title="Twitter &rarr; https://twitter.com/ExoticknightD" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://instagram.com/exoticknight" title="Instagram &rarr; https://instagram.com/exoticknight" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.linkedin.com/in/liang-weiwen-1877665a/" title="Linkin &rarr; https://www.linkedin.com/in/liang-weiwen-1877665a/" rel="noopener" target="_blank"><i class="fa fa-fw fa-linkin"></i>Linkin</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://garychang.cn" title="http://garychang.cn" rel="noopener" target="_blank">GaryChang的自留地</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现依赖注入↑"><span class="nav-number">1.</span> <span class="nav-text">实现依赖注入↑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从-API-入手↑"><span class="nav-number">2.</span> <span class="nav-text">从 API 入手↑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始分析↑"><span class="nav-number">3.</span> <span class="nav-text">开始分析↑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统一包装↑"><span class="nav-number">4.</span> <span class="nav-text">统一包装↑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结↑"><span class="nav-number">5.</span> <span class="nav-text">小结↑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注入器的奥秘↑"><span class="nav-number">6.</span> <span class="nav-text">注入器的奥秘↑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读源码的意外发现↑"><span class="nav-number">7.</span> <span class="nav-text">读源码的意外发现↑</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">exoticknight</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script id="ribbon" size="300" alpha="0.6" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://exoticknight.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://www.e10t.net/fictioninjection-series-analyze-angular-dependence-injection-and-extract-it-part-1/";
+    this.page.identifier = "fictioninjection-series-analyze-angular-dependence-injection-and-extract-it-part-1/";
+    this.page.title = 'FictionInjection-始动：Angular 依赖注入分析和源码抽取改造（上）';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://exoticknight.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+  
+</script>
+
+
+
+
+
+  
+    
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js"></script>
+
+<script>
+  var dsqjs = new DisqusJS({
+    api: '' || 'https://disqus.com/api/',
+    apikey: 'mIMUYBvF1jz0H6avrAuQyVdAg6s7bZm5Dy6JDsfTLa2U6cvdInxWpZc1Z33DRYmK',
+    shortname: 'exoticknight'
+  });
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

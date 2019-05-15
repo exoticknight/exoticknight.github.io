@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next gemini" lang="中文, English, 日本语">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="应用 github 地址。github 代码和文章代码并不同步，用作预览和 PR。  目标分析一句话概述：开发的应用是一个抓取网页有用信息并重新统一排布的应用，是 之前文章 提到的 radioit 计划里脚本的 GUI 版本。 关键词：网页抓取、信息统一、信息排布、脚本的 GUI 版本 功能：  浏览某一个广播站的广播 浏览某一个广播的详细信息 下载某一个广播最新的相关图片 下载某一个广播最新">
+<meta name="keywords" content="javascript,angularjs,angular-material,electron">
+<meta property="og:type" content="article">
+<meta property="og:title" content="配合 angular 和 angular-material 来开发基于 electron 的应用 · 1-- 分析与配置">
+<meta property="og:url" content="https://www.e10t.net/build-application-with-angular-and-ng-material-based-on-electron-1-analyze-and-configuration/index.html">
+<meta property="og:site_name" content="exoticknight&#39;s blog">
+<meta property="og:description" content="应用 github 地址。github 代码和文章代码并不同步，用作预览和 PR。  目标分析一句话概述：开发的应用是一个抓取网页有用信息并重新统一排布的应用，是 之前文章 提到的 radioit 计划里脚本的 GUI 版本。 关键词：网页抓取、信息统一、信息排布、脚本的 GUI 版本 功能：  浏览某一个广播站的广播 浏览某一个广播的详细信息 下载某一个广播最新的相关图片 下载某一个广播最新">
+<meta property="og:locale" content="中文, English, 日本语">
+<meta property="og:image" content="https://i.imgur.com/kvb5CTf.png">
+<meta property="og:updated_time" content="2015-09-05T09:11:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="配合 angular 和 angular-material 来开发基于 electron 的应用 · 1-- 分析与配置">
+<meta name="twitter:description" content="应用 github 地址。github 代码和文章代码并不同步，用作预览和 PR。  目标分析一句话概述：开发的应用是一个抓取网页有用信息并重新统一排布的应用，是 之前文章 提到的 radioit 计划里脚本的 GUI 版本。 关键词：网页抓取、信息统一、信息排布、脚本的 GUI 版本 功能：  浏览某一个广播站的广播 浏览某一个广播的详细信息 下载某一个广播最新的相关图片 下载某一个广播最新">
+<meta name="twitter:image" content="https://i.imgur.com/kvb5CTf.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="exoticknight's blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://www.e10t.net/build-application-with-angular-and-ng-material-based-on-electron-1-analyze-and-configuration/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>配合 angular 和 angular-material 来开发基于 electron 的应用 · 1-- 分析与配置 | exoticknight's blog</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-56129336-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-56129336-1');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="中文, English, 日本语">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">exoticknight's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">年寿有时而尽，荣乐止乎其身，二者必至之常期，未若文章之无穷</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/exoticknight" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/build-application-with-angular-and-ng-material-based-on-electron-1-analyze-and-configuration/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="exoticknight">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="exoticknight's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">配合 angular 和 angular-material 来开发基于 electron 的应用 · 1-- 分析与配置
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2015-06-13 19:32:07" itemprop="dateCreated datePublished" datetime="2015-06-13T19:32:07+08:00">2015-06-13</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2015-09-05 17:11:13" itemprop="dateModified" datetime="2015-09-05T17:11:13+08:00">2015-09-05</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/electron/" itemprop="url" rel="index"><span itemprop="name">electron</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/build-application-with-angular-and-ng-material-based-on-electron-1-analyze-and-configuration/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="build-application-with-angular-and-ng-material-based-on-electron-1-analyze-and-configuration/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://i.imgur.com/kvb5CTf.png" alt="thumbnail"></p>
+<blockquote>
+<p><a href="https://github.com/radioit/radioit-desktop" target="_blank" rel="noopener">应用 github 地址</a>。github 代码和文章代码并不同步，用作预览和 PR。</p>
+</blockquote>
+<h2 id="目标分析"><a href="#目标分析" class="headerlink" title="目标分析"></a>目标分析</h2><p>一句话概述：开发的应用是一个抓取网页有用信息并重新统一排布的应用，是 <a href="http://blog.e10t.net/radioit-plan-animate-radio-script-radioitscript/" target="_blank" rel="noopener">之前文章</a> 提到的 radioit 计划里脚本的 GUI 版本。</p>
+<p>关键词：网页抓取、信息统一、信息排布、脚本的 GUI 版本</p>
+<p>功能：</p>
+<ol>
+<li>浏览某一个广播站的广播</li>
+<li>浏览某一个广播的详细信息</li>
+<li>下载某一个广播最新的相关图片</li>
+<li>下载某一个广播最新的相关音频</li>
+<li>能够通过设置代理来突破某些限制</li>
+<li>能够离线浏览（未定）</li>
+<li>预定周期下载任务（未定）</li>
+<li>整合视频压制工具（未定）</li>
+</ol>
+<p>业务流程：</p>
+<ol>
+<li>请求特定 url 资源</li>
+<li>对取得的 url 资源进行信息提取</li>
+<li>信息整合成统一格式</li>
+<li>显示信息</li>
+<li>某些情况下执行预定命令行（未定）</li>
+</ol>
+<p>技术联想：</p>
+<ol>
+<li>请求特定 url 资源 -&gt; node</li>
+<li>对取得的 url 资源进行信息提取 -&gt; node 的某些库</li>
+<li>信息整合成统一格式 -&gt; javascript, json</li>
+<li>显示信息 -&gt; html、css、angular、angular material</li>
+<li>某些情况下执行预定命令行（未定） -&gt; node</li>
+</ol>
+<h2 id="技术分析"><a href="#技术分析" class="headerlink" title="技术分析"></a>技术分析</h2><p>技术要点：</p>
+<ol>
+<li>node.js(io.js)，负责网络连接，网页内容解析提取，非浏览器环境因此能够进行跨域访问</li>
+<li>angular，MVVM 框架，自动进行数据的渲染</li>
+<li>angular material，angular 推出的 material design UI 框架，适合作为桌面应用使用</li>
+<li>stylus，CSS 预处理器，合理直观的 CSS 编写格式</li>
+</ol>
+<p>脑内讨论</p>
+<ul>
+<li>Q：为什么使用 Electron？</li>
+<li><p>A：Electron 有意思地使用了 <code>main</code> 进程和 <code>render</code> 进程，<code>render</code> 进程产生于 <code>main</code> 进程中，因此可以简单地产生多个 <code>render</code> 进程，也就是多窗口。这是一个优势。</p>
+</li>
+<li><p>Q：不用 angular，用 react 是否可以？</p>
+</li>
+<li><p>A：可以，然而在假定选用了 react 之后，然后脑内模拟了一下编程的过程，react 似乎并不适合 html 代码经常修改的场合。而自己比较在行的是写 html 和 css，在界面设计上必定经常修改。另外在 material design 的 UI 框架上，使用配合 angular 的 angular material 显然更具操作性。当然 react 下也有 material design 的 UI 框架，但在试用之后感觉不太好用。另外就是自己翻译过一篇很长的有关 angular 的<a href="http://blog.e10t.net/translation-building-the-2048-game-in-angularjs/" target="_blank" rel="noopener">文章</a>，对 angular 比较熟悉。日后考虑改用 Polymer 重写。</p>
+</li>
+<li><p>Q：material design 是必须使用的吗？</p>
+</li>
+<li><p>A：作为桌面应用，需要有一点时刻记住的是桌面应用跟网页是不一样的。桌面应用需要稳定的窗口，要有标题栏等清晰的组件，也不需要太花哨的特效。material design 或者受 material design 影响的一些简洁 UI 风格已经在某些桌面软件上应用开来。Electron 作为使用网页作为 GUI 表现，使用 material design 是个稳妥之举。</p>
+</li>
+<li><p>Q：为什么不用 SASS / LESS？</p>
+</li>
+<li><p>A：SASS 需要 Ruby，对非 Rubyer 是非常无理的要求，逻辑表现能力强大而无用（非常用）；LESS 语法简单，支持混写，但逻辑表现力太弱。stylus 则是既有强有力的特性，也足够简单。有时，工具够用就行。参考：<a href="http://webdesign.tutsplus.com/articles/why-i-choose-stylus-and-you-should-too--webdesign-18412" target="_blank" rel="noopener">Why I Choose Stylus (And You Should Too)</a></p>
+</li>
+<li><p>Q：node 和页面中的 angular 如何沟通？</p>
+</li>
+<li><p>A：<code>main</code> 进程和 <code>reander</code> 进程有特定的模块进行通信。<code>render</code> 进程能通过页面中的全局变量和 angular 进行通讯。</p>
+</li>
+<li><p>Q：为什么要使用 node 的库来处理网页请求和内容提取？angular 自带有 $http 不是更方便？</p>
+</li>
+<li>A：如此一来，就能各自开发。node 只需要管如何得到数据，angular 只需要管如何显示数据。另外，如果需要更改 GUI，那么只需要去掉 angular，换上其他 UI 框架就可以，数据生成不受任何印象。只是如此开发需要更多的精力。</li>
+</ul>
+<h2 id="开发配置"><a href="#开发配置" class="headerlink" title="开发配置"></a>开发配置</h2><h3 id="NPM-配置"><a href="#NPM-配置" class="headerlink" title="NPM 配置"></a>NPM 配置</h3><p>node.js 的安装是必须的，不多介绍。安装完自带 npm 管理工具。</p>
+<p>用的最多的 node 命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm i xxx -g</span><br><span class="line">npm i xxx --save</span><br><span class="line">npm u xxx --save</span><br><span class="line">npm update</span><br></pre></td></tr></table></figure></p>
+<p>第一条是全局安装 node 模块。比如一些常用工具，每一个项目都可以用到的工具等。这些模块可以写在 <code>package.json</code> 中的 <code>devDependencies</code> 字段中。</p>
+<p>第二条是本地安装 node 模块并保存信息到 <code>package.json</code> 中。适合项目特定使用的模块。这些模块可以写在 <code>package.json</code> 中的 <code>dependencies</code> 字段中。</p>
+<p>第三条是卸载本地安装的 node 模块。node 模块太多了，尝试多个选最好的。</p>
+<p>第四条是升级 node 模块。</p>
+<p>以下是 <code>package.json</code> 文件的暂时内容。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"Radioit"</span>,</span><br><span class="line">  <span class="string">"description"</span>: <span class="string">"radioit desktop edition"</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"0.1.0"</span>,</span><br><span class="line">  <span class="string">"main"</span>: <span class="string">"main.js"</span>,</span><br><span class="line">  <span class="string">"author"</span>: <span class="string">"exoticknight"</span>,</span><br><span class="line">  <span class="string">"mail"</span>: <span class="string">"draco.knight0@gmail.com"</span>,</span><br><span class="line">  <span class="string">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"jshint"</span>: <span class="string">"latest"</span>,</span><br><span class="line">    <span class="string">"rimraf"</span>: <span class="string">"latest"</span>,</span><br><span class="line">    <span class="string">"electron-packager"</span>: <span class="string">"latest"</span>,</span><br><span class="line">    <span class="string">"electron-prebuilt"</span>: <span class="string">"latest"</span>,</span><br><span class="line">    <span class="string">"silence-chromium"</span>: <span class="string">"latest"</span>,</span><br><span class="line">    <span class="string">"mkdirp"</span>: <span class="string">"latest"</span>,</span><br><span class="line">    <span class="string">"nib"</span>: <span class="string">"latest"</span>,</span><br><span class="line">    <span class="string">"stylus"</span>: <span class="string">"latest"</span>,</span><br><span class="line">    <span class="string">"uglifyjs"</span>: <span class="string">"latest"</span>,</span><br><span class="line">    <span class="string">"browserify"</span>: <span class="string">"latest"</span>,</span><br><span class="line">    <span class="string">"watchify"</span>: <span class="string">"latest"</span>,</span><br><span class="line">    <span class="string">"parallelshell"</span>: <span class="string">"latest"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"build:css"</span>: <span class="string">"stylus -u nib src/css/app.styl -o static/css/app.css"</span>,</span><br><span class="line">    <span class="string">"watch:css"</span>: <span class="string">"stylus -u nib src/css/app.styl -o static/css/app.css -w"</span>,</span><br><span class="line">    <span class="string">"test"</span>: <span class="string">"electron main.js 2&gt;&amp;1 | silence-chromium"</span>,</span><br><span class="line">    <span class="string">"start"</span>: <span class="string">"npm run build:css &amp;&amp; electron main.js 2&gt;&amp;1 | silence-chromium"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"deepcopy"</span>: <span class="string">"^0.5.0"</span>,</span><br><span class="line">    <span class="string">"extend"</span>: <span class="string">"^2.0.1"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>暂时并没有太多的东西，注意要开发基于 Electron 应用，<code>electron-packager</code> 和 <code>electron-prebuilt</code> 必不可少，一个是 Electron 的打包工具，一个是 Electron 运行环境。而 <code>silence-chromium</code> 则是将 chromium 控制台信息输出到系统终端的工具。其他的工具都是博主开发过程中精选过的工具，还请读者自行 Google 之来学习。</p>
+<p>如果你看过本博客之前的一篇文章：<a href="http://blog.e10t.net/write-i18n-js-with-help-of-npm-as-build-tool/" target="_blank" rel="noopener">i18n.js 库的编写兼使用 npm 辅助开发</a>，就知道博主是能用 npm 就不用 gulp / grunt 的，因此在 <code>scripts</code> 字段中也写上了运行的脚本。</p>
+<h3 id="angularjs-配置"><a href="#angularjs-配置" class="headerlink" title="angularjs 配置"></a>angularjs 配置</h3><p>angular 的版本比较稳定，因此直接用 <code>bower</code> 来获取，不推荐其他包管理工具。</p>
+<blockquote>
+<p><code>bower</code> 需要先使用 <code>npm install bower -g</code> 来安装，也需要配置了 git 的环境。如果你使用 github for windows，那么请使用 gitshell 来运行。</p>
+</blockquote>
+<p>angular 的安装在下一节中。</p>
+<h3 id="angular-material-配置"><a href="#angular-material-配置" class="headerlink" title="angular material 配置"></a>angular material 配置</h3><p>对于 <code>bower</code> 来说，angular material 跟 angular 是一样的东西，只是后者是前者的依赖。</p>
+<p>运行 <code>bower install angular-material</code>， bower 会自动将依赖的的 <code>angular</code>、<code>angular-aria</code> 和 <code>angular-animate</code> 一并安装上。</p>
+<p>安装完后所有文件会在项目目录下的 <code>bower_components</code> 中找到。</p>
+<h3 id="Electron-配置"><a href="#Electron-配置" class="headerlink" title="Electron 配置"></a>Electron 配置</h3><p>具体参考：<a href="https://github.com/atom/electron/blob/master/docs/tutorial/quick-start.md" target="_blank" rel="noopener">Quick Start</a></p>
+<p>在 <code>package.json</code> 中有一个 <code>main</code> 字段，值是 <code>main.js</code>。这个就指定了 Electron 启动应用的入口。</p>
+<p>准备好文件结构。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app/</span><br><span class="line">├── package.json</span><br><span class="line">├── main.js</span><br><span class="line">└── index.html</span><br></pre></td></tr></table></figure>
+<h3 id="初始程序"><a href="#初始程序" class="headerlink" title="初始程序"></a>初始程序</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> BrowserWindow = <span class="built_in">require</span>( <span class="string">'browser-window'</span> );  <span class="comment">// Module to create native browser window.</span></span><br><span class="line"><span class="keyword">var</span> ipc = <span class="built_in">require</span>( <span class="string">'ipc'</span> );</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>( <span class="string">'path'</span> );</span><br><span class="line"></span><br><span class="line"><span class="comment">// global variable</span></span><br><span class="line"><span class="keyword">var</span> APP_NAME = <span class="string">'Radioit'</span>;</span><br><span class="line"><span class="keyword">var</span> INDEX = <span class="string">'file://'</span> + path.join( __dirname, <span class="string">'index.html'</span> );</span><br><span class="line"></span><br><span class="line"><span class="comment">// Report crashes to our server.</span></span><br><span class="line"><span class="built_in">require</span>( <span class="string">'crash-reporter'</span> ).start();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Keep a global reference of the window object, if you don't, the window will</span></span><br><span class="line"><span class="comment">// be closed automatically when the javascript object is GCed.</span></span><br><span class="line"><span class="keyword">var</span> mainWindow = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Quit when all windows are closed.</span></span><br><span class="line">app.on( <span class="string">'window-all-closed'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> ( process.platform != <span class="string">'darwin'</span> )</span><br><span class="line">    app.quit();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// This method will be called when Electron has done everything</span></span><br><span class="line"><span class="comment">// initialization and ready for creating browser windows.</span></span><br><span class="line">app.on( <span class="string">'ready'</span>, appReady );</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">appReady</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    mainWindow = <span class="keyword">new</span> BrowserWindow(&#123;</span><br><span class="line">        <span class="string">'width'</span>: <span class="number">1024</span>,</span><br><span class="line">        <span class="string">'height'</span>: <span class="number">600</span>,</span><br><span class="line">        <span class="string">'resizable'</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="string">'accept-first-mouse'</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">'title'</span>: APP_NAME,</span><br><span class="line">        <span class="string">'show'</span>: <span class="literal">false</span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    mainWindow.loadUrl( INDEX );</span><br><span class="line">    mainWindow.openDevTools(); <span class="comment">// remove this</span></span><br><span class="line"></span><br><span class="line">    mainWindow.webContents.on( <span class="string">'did-finish-load'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        mainWindow.show();</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    mainWindow.on( <span class="string">'closed'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        mainWindow = <span class="literal">null</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码好像很多，其实基本就是照抄 quick start，没有任何压力。</p>
+<p>博主写的 <code>main.js</code> 和 quick start 中的有所不同。在新建 <code>mainWindow</code> 的时候，加入了其他参数 <code>show: false</code> 和 <code>resizable: false</code>，分别是隐藏窗口和窗口不可拉伸。也增加了一个：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mainWindow.webContents.on( <span class="string">'did-finish-load'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    mainWindow.show();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>作用是网页内容完全载入后才显示窗口，避免一些内容还没载入完就显示。</p>
+<p>最后运行 <code>npm run test</code> 看看结果。</p>
+<blockquote>
+<p>有什么问题请留言。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/angularjs/" rel="tag"># angularjs</a>
+          
+            <a href="/tags/angular-material/" rel="tag"># angular-material</a>
+          
+            <a href="/tags/electron/" rel="tag"># electron</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/build-application-with-angular-and-ng-material-based-on-electron-0-preface/" rel="next" title="配合 angular 和 angular-material 来开发基于 electron 的应用 · 0-- 前言">
+                <i class="fa fa-chevron-left"></i> 配合 angular 和 angular-material 来开发基于 electron 的应用 · 0-- 前言
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/build-application-with-angular-and-ng-material-based-on-electron-2-use-node-lib-and-code/" rel="prev" title="配合 angular 和 angular-material 来开发基于 electron 的应用 · 2--node 库的使用和抓取代码的编写">
+                配合 angular 和 angular-material 来开发基于 electron 的应用 · 2--node 库的使用和抓取代码的编写 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">exoticknight</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">51</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/exoticknight" title="GitHub &rarr; https://github.com/exoticknight" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:draco.knight0#@gmail.com" title="E-Mail &rarr; mailto:draco.knight0#@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/ExoticknightD" title="Twitter &rarr; https://twitter.com/ExoticknightD" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://instagram.com/exoticknight" title="Instagram &rarr; https://instagram.com/exoticknight" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.linkedin.com/in/liang-weiwen-1877665a/" title="Linkin &rarr; https://www.linkedin.com/in/liang-weiwen-1877665a/" rel="noopener" target="_blank"><i class="fa fa-fw fa-linkin"></i>Linkin</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://garychang.cn" title="http://garychang.cn" rel="noopener" target="_blank">GaryChang的自留地</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标分析"><span class="nav-number">1.</span> <span class="nav-text">目标分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#技术分析"><span class="nav-number">2.</span> <span class="nav-text">技术分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发配置"><span class="nav-number">3.</span> <span class="nav-text">开发配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NPM-配置"><span class="nav-number">3.1.</span> <span class="nav-text">NPM 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#angularjs-配置"><span class="nav-number">3.2.</span> <span class="nav-text">angularjs 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#angular-material-配置"><span class="nav-number">3.3.</span> <span class="nav-text">angular material 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Electron-配置"><span class="nav-number">3.4.</span> <span class="nav-text">Electron 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始程序"><span class="nav-number">3.5.</span> <span class="nav-text">初始程序</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">exoticknight</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script id="ribbon" size="300" alpha="0.6" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://exoticknight.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://www.e10t.net/build-application-with-angular-and-ng-material-based-on-electron-1-analyze-and-configuration/";
+    this.page.identifier = "build-application-with-angular-and-ng-material-based-on-electron-1-analyze-and-configuration/";
+    this.page.title = '配合 angular 和 angular-material 来开发基于 electron 的应用 · 1-- 分析与配置';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://exoticknight.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+  
+</script>
+
+
+
+
+
+  
+    
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js"></script>
+
+<script>
+  var dsqjs = new DisqusJS({
+    api: '' || 'https://disqus.com/api/',
+    apikey: 'mIMUYBvF1jz0H6avrAuQyVdAg6s7bZm5Dy6JDsfTLa2U6cvdInxWpZc1Z33DRYmK',
+    shortname: 'exoticknight'
+  });
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

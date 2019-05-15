@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next gemini" lang="中文, English, 日本语">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="coolshell出了个游戏，网址点这里，奉上攻略。 第0关brainfuck语言，很久以前就觉得有意思。 自己看就算了，直接网上执行一次。点这个或这个或这个都可以。 得出是welcome.html。 第1关2, 3, 6, 18, 108, ? 2×3=6，3×6=18，6×18=108，18×108=1944 输入1944.html知道x=1944。 “生命、宇宙以及任何事情的终极答案”，42">
+<meta name="keywords" content="javascript,python,walkthrough,quiz">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CoolShell puzzle game 攻略">
+<meta property="og:url" content="https://www.e10t.net/coolshell-puzzle-game-walkthrough/index.html">
+<meta property="og:site_name" content="exoticknight&#39;s blog">
+<meta property="og:description" content="coolshell出了个游戏，网址点这里，奉上攻略。 第0关brainfuck语言，很久以前就觉得有意思。 自己看就算了，直接网上执行一次。点这个或这个或这个都可以。 得出是welcome.html。 第1关2, 3, 6, 18, 108, ? 2×3=6，3×6=18，6×18=108，18×108=1944 输入1944.html知道x=1944。 “生命、宇宙以及任何事情的终极答案”，42">
+<meta property="og:locale" content="中文, English, 日本语">
+<meta property="og:updated_time" content="2014-08-06T08:22:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CoolShell puzzle game 攻略">
+<meta name="twitter:description" content="coolshell出了个游戏，网址点这里，奉上攻略。 第0关brainfuck语言，很久以前就觉得有意思。 自己看就算了，直接网上执行一次。点这个或这个或这个都可以。 得出是welcome.html。 第1关2, 3, 6, 18, 108, ? 2×3=6，3×6=18，6×18=108，18×108=1944 输入1944.html知道x=1944。 “生命、宇宙以及任何事情的终极答案”，42">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="exoticknight's blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://www.e10t.net/coolshell-puzzle-game-walkthrough/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>CoolShell puzzle game 攻略 | exoticknight's blog</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-56129336-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-56129336-1');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="中文, English, 日本语">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">exoticknight's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">年寿有时而尽，荣乐止乎其身，二者必至之常期，未若文章之无穷</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/exoticknight" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/coolshell-puzzle-game-walkthrough/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="exoticknight">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="exoticknight's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">CoolShell puzzle game 攻略
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2014-08-03 21:56:51" itemprop="dateCreated datePublished" datetime="2014-08-03T21:56:51+08:00">2014-08-03</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2014-08-06 16:22:53" itemprop="dateModified" datetime="2014-08-06T16:22:53+08:00">2014-08-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/黑客/" itemprop="url" rel="index"><span itemprop="name">黑客</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/coolshell-puzzle-game-walkthrough/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="coolshell-puzzle-game-walkthrough/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>coolshell出了个游戏，网址点<a href="http://fun.coolshell.cn/" target="_blank" rel="noopener">这里</a>，奉上攻略。</p>
+<h2 id="第0关"><a href="#第0关" class="headerlink" title="第0关"></a>第0关</h2><p>brainfuck语言，很久以前就觉得有意思。</p>
+<p>自己看就算了，直接网上执行一次。点<a href="http://esoteric.sange.fi/brainfuck/impl/interp/i.html" target="_blank" rel="noopener">这个</a>或<a href="http://www.brainfuck.tk/" target="_blank" rel="noopener">这个</a>或<a href="http://copy.sh/brainfuck/" target="_blank" rel="noopener">这个</a>都可以。</p>
+<p>得出是welcome.html。</p>
+<h2 id="第1关"><a href="#第1关" class="headerlink" title="第1关"></a>第1关</h2><p>2, 3, 6, 18, 108, ?</p>
+<p>2×3=6，3×6=18，6×18=108，18×108=1944</p>
+<p>输入1944.html知道x=1944。</p>
+<p>“生命、宇宙以及任何事情的终极答案”，42。输入42.html知道y=42。</p>
+<p>1944×42=81648</p>
+<p>得81648.html。</p>
+<h2 id="第2关"><a href="#第2关" class="headerlink" title="第2关"></a>第2关</h2><p>那个键盘排布是dvorak方案，不同于我们平常的QWERT键盘方案。</p>
+<p>直接上网找<a href="http://wbic16.xedoloh.com/dvorak.html" target="_blank" rel="noopener">转换</a>，那串字符转过来就是</p>
+<p><code>main() { printf(&amp;unix[&quot;\021%six\012\0&quot;],(unix)[&quot;have&quot;]+&quot;fun&quot;-0x60);}</code></p>
+<p>看起来就是C++语言。继续在线编译运行。运行出错，好吧。</p>
+<p>按照collshell好像很喜欢IOCCC的尿性，用Google搜一些关键字，比如奇怪的<code>&quot;&amp;unix&quot;</code>，记得加上双引号。找到一个比较有用的<a href="http://www.di-mgt.com.au/src/korn_ioccc.txt" target="_blank" rel="noopener">解释</a>。</p>
+<p>学以致用，得出答案：unix</p>
+<h2 id="第3关"><a href="#第3关" class="headerlink" title="第3关"></a>第3关</h2><p>扫描QR Code，得<code>[abcdefghijklmnopqrstuvwxyz] &lt;=&gt; [pvwdgazxubqfsnrhocitlkeymj]</code>。简单的字符替换。</p>
+<p>在线解析QR code也可以，<a href="http://zxing.org/w/decode.jspx" target="_blank" rel="noopener">网址</a>。</p>
+<p>因为在浏览器下，直接用javascript写脚本了。OK……注意是后一个的字母替换前一个。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">decode</span>(<span class="params">text</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> newText=<span class="string">''</span>;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;text.length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (dict[text[i]]) &#123;</span><br><span class="line">            newText += dict[text[i]];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            newText += text[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newText;</span><br><span class="line">&#125;;</span><br><span class="line">dict=&#123;&#125;;</span><br><span class="line">ciper=<span class="string">'abcdefghijklmnopqrstuvwxyz'</span>;</span><br><span class="line">alphe=<span class="string">'pvwdgazxubqfsnrhocitlkeymj'</span></span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;alphe.length;i++) &#123;</span><br><span class="line">    dict[alphe[i]]=ciper[i];</span><br><span class="line">&#125;</span><br><span class="line">rawText=<span class="string">'Wxgcg txgcg ui p ixgff, txgcg ui p epm. I gyhgwt mrl lig txg ixgff wrsspnd tr irfkg txui hcrvfgs, nre, hfgpig tcm liunz txg crt13 ra "ixgff" tr gntgc ngyt fgkgf.'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(decode(rawText));</span><br></pre></td></tr></table></figure>
+<p>得到一段话：<code>Where there is a shell, there is a way. I expect you use the shell command to solve this problem, now, please try using the rot13 of &quot;shell&quot; to enter next level.</code></p>
+<p>就是说要用ROT13来转换<code>shell</code>这个字符串，得出是furyy</p>
+<h2 id="第4关"><a href="#第4关" class="headerlink" title="第4关"></a>第4关</h2><p>左边就是告诉我们提取字符的模式：</p>
+<p>每5个字符，看前两个和后两个，必须满足：</p>
+<ol>
+<li>必须含一个大写字母和一个数字</li>
+<li>是回文</li>
+</ol>
+<p>而提取的字符则必须是小写字母。</p>
+<p><code>The answer has been lost in the source</code>则是说密文在源代码里面。有好一大串。</p>
+<p>用正则吧，写出来就是<code>([A-Z])([0-9])[a-z](\2)(\1)|([0-9])([A-Z])[a-z](\6)(\5)</code>。</p>
+<p>抱歉，更高级的写不出来了。</p>
+<p>直接开sublime text 2，复制那段大串字符进去，搜索开启正则模式和区分大小写，得：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">E1v1E</span><br><span class="line">4FaF4</span><br><span class="line">9XrX9</span><br><span class="line">O3i3O</span><br><span class="line">0MaM0</span><br><span class="line">4GbG4</span><br><span class="line">M5l5M</span><br><span class="line">0WeW0</span><br><span class="line">Y0s0Y</span><br></pre></td></tr></table></figure>
+<p>取中间的variables就是答案。</p>
+<h2 id="第5关"><a href="#第5关" class="headerlink" title="第5关"></a>第5关</h2><p>点图片，按后跳转，得一串数字，复制到地址栏，又是一串，好吧这模式都太无聊了。而且页面没有jQuery，先引入。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jq = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">jq.src = <span class="string">"https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"</span>;</span><br><span class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>].appendChild(jq);</span><br><span class="line">jQuery.noConflict();</span><br></pre></td></tr></table></figure>
+<p>接着模仿我之前写过的另外一个<a href="http://blog.e10t.net/answers-for-alibaba-quiz3/" target="_blank" rel="noopener">攻略</a>里面的做法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">url = <span class="string">'http://fun.coolshell.cn/n/'</span>;</span><br><span class="line">urlreal=url + <span class="string">'32222'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">g</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $.<span class="keyword">get</span>(urlreal, function(data)&#123;</span><br><span class="line">        urlreal = url + data;</span><br><span class="line">        <span class="built_in">console</span>.log(data);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>之后就不断执行<code>g()</code>吧，最后答案是tree。</p>
+<h2 id="第-关"><a href="#第-关" class="headerlink" title="第?关"></a>第?关</h2><p>最后tree.html跳回一开始了，不知道是不是我太渣已经过时了……</p>
+<p>突然想到可能会看reference，于是访问了一下前一个地址：fun.coolshell.cn/n/20446，再回头访问tree.html，可以了。</p>
+<h2 id="第6关"><a href="#第6关" class="headerlink" title="第6关"></a>第6关</h2><p>算法……我等只会Google的渣渣就棘手了。</p>
+<p>好歹用python写了还原树结构的代码，但是它说找deepest path就不懂了，看看有什么人有解释……</p>
+<p>最后还是得靠自己画树……借助python代码将节点关系打出来。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">__author__ = <span class="string">'draco'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, value, left=None, right=None)</span>:</span></span><br><span class="line">        self.value = value</span><br><span class="line">        self.left = left</span><br><span class="line">        self.right = right</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">binaryTreeFromInPostOrder</span><span class="params">(in_order, post_order)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(in_order) == <span class="number">0</span> <span class="keyword">or</span> len(post_list) == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    node = Node(post_order[<span class="number">-1</span>])</span><br><span class="line">    node_index = in_order.index(node.value)</span><br><span class="line">    node.left = binaryTreeFromInPostOrder(in_order[:node_index], post_order[:node_index])</span><br><span class="line">    node.right = binaryTreeFromInPostOrder(in_order[node_index+<span class="number">1</span>:], post_order[node_index:<span class="number">-1</span>])</span><br><span class="line">    <span class="keyword">return</span> node</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printLevel</span><span class="params">(q)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> tree_structure</span><br><span class="line">    next_level = list()</span><br><span class="line">    this_structure = list()</span><br><span class="line">    <span class="keyword">while</span> len(q) != <span class="number">0</span>:</span><br><span class="line">        node = q.pop(<span class="number">0</span>)</span><br><span class="line">        this_structure.append((node[<span class="number">0</span>], node[<span class="number">1</span>].value))</span><br><span class="line">        <span class="keyword">if</span> node[<span class="number">1</span>].left:</span><br><span class="line">            next_level.append((node[<span class="number">1</span>].value + <span class="string">"-l"</span>, node[<span class="number">1</span>].left))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> node[<span class="number">1</span>].right:</span><br><span class="line">            next_level.append((node[<span class="number">1</span>].value + <span class="string">"-r"</span>, node[<span class="number">1</span>].right))</span><br><span class="line"></span><br><span class="line">    tree_structure.append(this_structure)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> next_level</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printTree</span><span class="params">(tree)</span>:</span></span><br><span class="line">    current_level = list()</span><br><span class="line">    n = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    current_level.append((<span class="string">"None"</span>, tree))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> n &lt; <span class="number">14</span>:</span><br><span class="line">        current_level = printLevel(current_level)</span><br><span class="line">        n += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">in_list   = <span class="string">"T b H V h 3 o g P W F L u A f G r m 1 x J 7 w e 0 i Q Y n Z 8 K v q k 9 y 5 C N B D 2 4 U l c p I E M a j 6 S R O X s d z t"</span>.split(<span class="string">" "</span>)</span><br><span class="line"></span><br><span class="line">post_list = <span class="string">"T V H o 3 h P g b F f A u m r 7 J x e w 1 Y Q i 0 Z n G L K y 9 k q v N D B C 5 4 c l U 2 8 E I R S 6 j d s X O a M p W t z"</span>.split(<span class="string">" "</span>)</span><br><span class="line"></span><br><span class="line">tree_structure = list()</span><br><span class="line"></span><br><span class="line">tree = binaryTreeFromInPostOrder(in_list, post_list)</span><br><span class="line"></span><br><span class="line">printTree(tree)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> tree_structure:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[(&apos;None&apos;, &apos;z&apos;)]</span><br><span class="line">[(&apos;z-l&apos;, &apos;W&apos;), (&apos;z-r&apos;, &apos;t&apos;)]</span><br><span class="line">[(&apos;W-l&apos;, &apos;b&apos;), (&apos;W-r&apos;, &apos;p&apos;)]</span><br><span class="line">[(&apos;b-l&apos;, &apos;T&apos;), (&apos;b-r&apos;, &apos;g&apos;), (&apos;p-l&apos;, &apos;8&apos;), (&apos;p-r&apos;, &apos;M&apos;)]</span><br><span class="line">[(&apos;g-l&apos;, &apos;h&apos;), (&apos;g-r&apos;, &apos;P&apos;), (&apos;8-l&apos;, &apos;L&apos;), (&apos;8-r&apos;, &apos;2&apos;), (&apos;M-l&apos;, &apos;I&apos;), (&apos;M-r&apos;, &apos;a&apos;)]</span><br><span class="line">[(&apos;h-l&apos;, &apos;H&apos;), (&apos;h-r&apos;, &apos;3&apos;), (&apos;L-l&apos;, &apos;F&apos;), (&apos;L-r&apos;, &apos;G&apos;), (&apos;2-l&apos;, &apos;5&apos;), (&apos;2-r&apos;, &apos;U&apos;), (&apos;I-r&apos;, &apos;E&apos;), (&apos;a-r&apos;, &apos;O&apos;)]</span><br><span class="line">[(&apos;H-r&apos;, &apos;V&apos;), (&apos;3-r&apos;, &apos;o&apos;), (&apos;G-l&apos;, &apos;u&apos;), (&apos;G-r&apos;, &apos;n&apos;), (&apos;5-l&apos;, &apos;v&apos;), (&apos;5-r&apos;, &apos;C&apos;), (&apos;U-l&apos;, &apos;4&apos;), (&apos;U-r&apos;, &apos;l&apos;), (&apos;O-l&apos;, &apos;j&apos;), (&apos;O-r&apos;, &apos;X&apos;)]</span><br><span class="line">[(&apos;u-r&apos;, &apos;A&apos;), (&apos;n-l&apos;, &apos;0&apos;), (&apos;n-r&apos;, &apos;Z&apos;), (&apos;v-l&apos;, &apos;K&apos;), (&apos;v-r&apos;, &apos;q&apos;), (&apos;C-r&apos;, &apos;B&apos;), (&apos;l-r&apos;, &apos;c&apos;), (&apos;j-r&apos;, &apos;6&apos;), (&apos;X-r&apos;, &apos;s&apos;)]</span><br><span class="line">[(&apos;A-r&apos;, &apos;f&apos;), (&apos;0-l&apos;, &apos;1&apos;), (&apos;0-r&apos;, &apos;i&apos;), (&apos;q-r&apos;, &apos;k&apos;), (&apos;B-l&apos;, &apos;N&apos;), (&apos;B-r&apos;, &apos;D&apos;), (&apos;6-r&apos;, &apos;S&apos;), (&apos;s-r&apos;, &apos;d&apos;)]</span><br><span class="line">[(&apos;1-l&apos;, &apos;r&apos;), (&apos;1-r&apos;, &apos;w&apos;), (&apos;i-r&apos;, &apos;Q&apos;), (&apos;k-r&apos;, &apos;9&apos;), (&apos;S-r&apos;, &apos;R&apos;)]</span><br><span class="line">[(&apos;r-r&apos;, &apos;m&apos;), (&apos;w-l&apos;, &apos;x&apos;), (&apos;w-r&apos;, &apos;e&apos;), (&apos;Q-r&apos;, &apos;Y&apos;), (&apos;9-r&apos;, &apos;y&apos;)]</span><br><span class="line">[(&apos;x-r&apos;, &apos;J&apos;)]</span><br><span class="line">[(&apos;J-r&apos;, &apos;7&apos;)]</span><br><span class="line">[]</span><br></pre></td></tr></table></figure>
+<p>然后手动画树！最后得到最深路径是zWp8LGn01wxJ7。</p>
+<p>Linux下执行：</p>
+<p><code>echo U2FsdGVkX1+gxunKbemS2193vhGGQ1Y8pc5gPegMAcg=|openssl enc -aes-128-cbc -a -d -pass pass:zWp8LGn01wxJ7</code></p>
+<p>得到nqueens。终于过了。</p>
+<h2 id="第7关"><a href="#第7关" class="headerlink" title="第7关"></a>第7关</h2><p>好吧八皇后。说实话我从来都不太想在做类似的游戏时写算法，又不是什么ACM做题，唉。直接Google N皇后算法的python算法，解出N=9的所有解，352个解，是时候用暴力手段了。</p>
+<p>只是它这个code和通常表示八皇后解的数字不一样，正常是从上到下从左到右记录，它这个是从下到上从右到左记录……</p>
+<p>暴力出全部解之后其实都一样啦。</p>
+<p>结合sha1解密验证的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">__author__ = <span class="string">'draco'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line">c = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>)</span><br><span class="line">nq = [v <span class="keyword">for</span> v <span class="keyword">in</span> permutations(c) <span class="keyword">if</span> <span class="number">9</span>==len(&#123;v[i<span class="number">-1</span>]+i <span class="keyword">for</span> i <span class="keyword">in</span> c&#125;)==len(&#123;v[i<span class="number">-1</span>]-i <span class="keyword">for</span> i <span class="keyword">in</span> c&#125;)]</span><br><span class="line"><span class="keyword">for</span> q <span class="keyword">in</span> nq:</span><br><span class="line">    code = <span class="string">""</span>.join(map(str, q))</span><br><span class="line">    s = hashlib.sha1()</span><br><span class="line">    s.update(<span class="string">"zWp8LGn01wxJ7"</span> + code + <span class="string">"\n"</span>)</span><br><span class="line">    <span class="keyword">if</span> s.hexdigest() == <span class="string">"e48d316ed573d3273931e19f9ac9f9e6039a4242"</span>:</span><br><span class="line">        print(code)</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<p>得出答案：953172864</p>
+<h2 id="第8关"><a href="#第8关" class="headerlink" title="第8关"></a>第8关</h2><p>好吧26进制</p>
+<p>A=1, B=2, … , Z=26</p>
+<p>于是AA=26^1<em>1+1, ZZ=26^1</em>26+26, AAA=26^2<em>1+26^1</em>1+1, …</p>
+<p>算出来是85165，然后还要转字符……是DUYO。</p>
+<h2 id="第9关"><a href="#第9关" class="headerlink" title="第9关"></a>第9关</h2><p>根据图片搜出来是Pigpen Cipher，上wiki查到对应英文。</p>
+<p>答案是helloworld。</p>
+<p>啊终于通关了，看top100，排53。</p>
+<p>本文被原作者指出会破坏游戏公平性，故在活动结束之后才重新发布……当时自己考虑不周给各位道歉了OTL。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/walkthrough/" rel="tag"># walkthrough</a>
+          
+            <a href="/tags/quiz/" rel="tag"># quiz</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/python-interesting-function-zip/" rel="next" title="python中有趣的zip函数">
+                <i class="fa fa-chevron-left"></i> python中有趣的zip函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/dental-extraction/" rel="prev" title="拔牙">
+                拔牙 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">exoticknight</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">51</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/exoticknight" title="GitHub &rarr; https://github.com/exoticknight" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:draco.knight0#@gmail.com" title="E-Mail &rarr; mailto:draco.knight0#@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/ExoticknightD" title="Twitter &rarr; https://twitter.com/ExoticknightD" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://instagram.com/exoticknight" title="Instagram &rarr; https://instagram.com/exoticknight" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.linkedin.com/in/liang-weiwen-1877665a/" title="Linkin &rarr; https://www.linkedin.com/in/liang-weiwen-1877665a/" rel="noopener" target="_blank"><i class="fa fa-fw fa-linkin"></i>Linkin</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://garychang.cn" title="http://garychang.cn" rel="noopener" target="_blank">GaryChang的自留地</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第0关"><span class="nav-number">1.</span> <span class="nav-text">第0关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第1关"><span class="nav-number">2.</span> <span class="nav-text">第1关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第2关"><span class="nav-number">3.</span> <span class="nav-text">第2关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第3关"><span class="nav-number">4.</span> <span class="nav-text">第3关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第4关"><span class="nav-number">5.</span> <span class="nav-text">第4关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第5关"><span class="nav-number">6.</span> <span class="nav-text">第5关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-关"><span class="nav-number">7.</span> <span class="nav-text">第?关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第6关"><span class="nav-number">8.</span> <span class="nav-text">第6关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第7关"><span class="nav-number">9.</span> <span class="nav-text">第7关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第8关"><span class="nav-number">10.</span> <span class="nav-text">第8关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第9关"><span class="nav-number">11.</span> <span class="nav-text">第9关</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">exoticknight</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script id="ribbon" size="300" alpha="0.6" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://exoticknight.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://www.e10t.net/coolshell-puzzle-game-walkthrough/";
+    this.page.identifier = "coolshell-puzzle-game-walkthrough/";
+    this.page.title = 'CoolShell puzzle game 攻略';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://exoticknight.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+  
+</script>
+
+
+
+
+
+  
+    
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js"></script>
+
+<script>
+  var dsqjs = new DisqusJS({
+    api: '' || 'https://disqus.com/api/',
+    apikey: 'mIMUYBvF1jz0H6avrAuQyVdAg6s7bZm5Dy6JDsfTLa2U6cvdInxWpZc1Z33DRYmK',
+    shortname: 'exoticknight'
+  });
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
