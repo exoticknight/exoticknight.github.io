@@ -12,7 +12,7 @@
 
 
 
-<html class="theme-next gemini" lang="中文, English, 日本语">
+<html class="theme-next gemini" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,6 +20,31 @@
 <meta name="theme-color" content="#222">
 
 
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css">
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-minimal.min.css">
+
+
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -31,6 +56,11 @@
 
 
 
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.css">
 
 
 
@@ -38,27 +68,29 @@
 
 
 
+  
 
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css">
 
 <link rel="stylesheet" href="/css/main.css?v=7.1.1">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png?v=7.1.1">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png?v=7.1.1">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png?v=7.1.1">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+  <link rel="mask-icon" href="/images/favicon/logo.svg?v=7.1.1" color="#222">
 
 
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+
+
+  <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
 
 
 
@@ -72,9 +104,9 @@
     version: '7.1.1',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
-    back2top_sidebar: false,
-    fancybox: false,
-    fastclick: false,
+    back2top_sidebar: true,
+    fancybox: true,
+    fastclick: true,
     lazyload: false,
     tabs: true,
     motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -97,9 +129,9 @@
   <meta name="keywords" content="IT, frontend">
 <meta property="og:type" content="website">
 <meta property="og:title" content="exoticknight&#39;s blog">
-<meta property="og:url" content="https://www.e10t.net/page/2/index.html">
+<meta property="og:url" content="https://blog.e10t.net/page/2/index.html">
 <meta property="og:site_name" content="exoticknight&#39;s blog">
-<meta property="og:locale" content="中文, English, 日本语">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="exoticknight&#39;s blog">
 
@@ -111,7 +143,7 @@
 
   
   
-  <link rel="canonical" href="https://www.e10t.net/page/2/">
+  <link rel="canonical" href="https://blog.e10t.net/page/2/">
 
 
 
@@ -173,7 +205,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="中文, English, 日本语">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -205,7 +237,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -233,7 +265,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
         
@@ -250,7 +282,7 @@
 
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
         
@@ -267,7 +299,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
 
   </li>
         
@@ -284,7 +316,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
 
   </li>
         
@@ -301,7 +333,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
 
@@ -312,7 +344,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
         </li>
       
     </ul>
@@ -332,7 +364,7 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -389,12 +421,482 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/a-weird-experience-while-using-pyspider/">
+    <link itemprop="mainEntityOfPage" href="https://blog.e10t.net/mocha-chai-travis-ci-codecov-workflow/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="exoticknight">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar_green.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="exoticknight's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/mocha-chai-travis-ci-codecov-workflow/" class="post-title-link" itemprop="url">mocha + chai + Travis CI + Codecov 使用流程</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-09-24 23:29:00 / 修改时间：23:31:01" itemprop="dateCreated datePublished" datetime="2015-09-24T23:29:00+08:00">2015-09-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/mocha-chai-travis-ci-codecov-workflow/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="mocha-chai-travis-ci-codecov-workflow/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.4k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              mochaa feature-rich JavaScript test framework running on Node.js and the browser
+chaia BDD / TDD assertion library for node and the browser that can b
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/mocha-chai-travis-ci-codecov-workflow/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.e10t.net/build-application-with-angular-and-ng-material-based-on-electron-3-file-structure-and-workflow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="exoticknight">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar_green.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="exoticknight's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/build-application-with-angular-and-ng-material-based-on-electron-3-file-structure-and-workflow/" class="post-title-link" itemprop="url">配合 angular 和 angular-material 来开发基于 electron 的应用 · 3-- 文件组织结构和开发流程</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-09-05 17:09:13 / 修改时间：17:10:15" itemprop="dateCreated datePublished" datetime="2015-09-05T17:09:13+08:00">2015-09-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/electron/" itemprop="url" rel="index"><span itemprop="name">electron</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/build-application-with-angular-and-ng-material-based-on-electron-3-file-structure-and-workflow/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="build-application-with-angular-and-ng-material-based-on-electron-3-file-structure-and-workflow/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              文件组织结构良好的文件组织结构不仅能帮助我们更快地定位文件，更能配合开发工具形成流畅的开发流程，从而提高编程效率。
+以下的目录和文件都放在存放应用的根目录 app 下。
+package.jsonElectron 应用的配置文件，经常做 node 开发的人应该很熟悉了。稍微说明一下一些字段：
+name
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/build-application-with-angular-and-ng-material-based-on-electron-3-file-structure-and-workflow/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.e10t.net/a-weird-experience-while-using-pyspider/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="exoticknight">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar_green.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -427,14 +929,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2015-07-01 23:16:30" itemprop="dateCreated datePublished" datetime="2015-07-01T23:16:30+08:00">2015-07-01</time>
+              <time title="创建时间：2015-07-01 23:16:30" itemprop="dateCreated datePublished" datetime="2015-07-01T23:16:30+08:00">2015-07-01</time>
             
 
             
@@ -449,35 +951,35 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/黑客/" itemprop="url" rel="index"><span itemprop="name">黑客</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/杂谈/" itemprop="url" rel="index"><span itemprop="name">杂谈</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
@@ -498,7 +1000,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
             
-                <span class="post-meta-item-text">Comments: </span>
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/a-weird-experience-while-using-pyspider/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="a-weird-experience-while-using-pyspider/" itemprop="commentCount"></span>
                 </a>
@@ -511,6 +1013,34 @@
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
           
 
           
@@ -540,7 +1070,7 @@
           
             <div class="post-button text-center">
               <a class="btn" href="/a-weird-experience-while-using-pyspider/#more" rel="contents">
-                Read more &raquo;
+                阅读全文 &raquo;
               </a>
             </div>
           
@@ -599,12 +1129,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/build-application-with-angular-and-ng-material-based-on-electron-2-use-node-lib-and-code/">
+    <link itemprop="mainEntityOfPage" href="https://blog.e10t.net/build-application-with-angular-and-ng-material-based-on-electron-2-use-node-lib-and-code/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="exoticknight">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar_green.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -637,14 +1167,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2015-06-29 16:11:33" itemprop="dateCreated datePublished" datetime="2015-06-29T16:11:33+08:00">2015-06-29</time>
+              <time title="创建时间：2015-06-29 16:11:33" itemprop="dateCreated datePublished" datetime="2015-06-29T16:11:33+08:00">2015-06-29</time>
             
 
             
@@ -659,9 +1189,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Edited on</span>
+                  <span class="post-meta-item-text">更新于</span>
                 
-                <time title="Modified: 2015-09-05 17:10:41" itemprop="dateModified" datetime="2015-09-05T17:10:41+08:00">2015-09-05</time>
+                <time title="修改时间：2015-09-05 17:10:41" itemprop="dateModified" datetime="2015-09-05T17:10:41+08:00">2015-09-05</time>
               
             
           </span>
@@ -675,28 +1205,28 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/electron/" itemprop="url" rel="index"><span itemprop="name">electron</span></a></span>
@@ -717,7 +1247,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
             
-                <span class="post-meta-item-text">Comments: </span>
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/build-application-with-angular-and-ng-material-based-on-electron-2-use-node-lib-and-code/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="build-application-with-angular-and-ng-material-based-on-electron-2-use-node-lib-and-code/" itemprop="commentCount"></span>
                 </a>
@@ -730,6 +1260,34 @@
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
           
 
           
@@ -760,7 +1318,7 @@ superagentsuperagen
           
             <div class="post-button text-center">
               <a class="btn" href="/build-application-with-angular-and-ng-material-based-on-electron-2-use-node-lib-and-code/#more" rel="contents">
-                Read more &raquo;
+                阅读全文 &raquo;
               </a>
             </div>
           
@@ -819,12 +1377,12 @@ superagentsuperagen
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/build-application-with-angular-and-ng-material-based-on-electron-1-analyze-and-configuration/">
+    <link itemprop="mainEntityOfPage" href="https://blog.e10t.net/build-application-with-angular-and-ng-material-based-on-electron-1-analyze-and-configuration/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="exoticknight">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar_green.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -857,14 +1415,14 @@ superagentsuperagen
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2015-06-13 19:32:07" itemprop="dateCreated datePublished" datetime="2015-06-13T19:32:07+08:00">2015-06-13</time>
+              <time title="创建时间：2015-06-13 19:32:07" itemprop="dateCreated datePublished" datetime="2015-06-13T19:32:07+08:00">2015-06-13</time>
             
 
             
@@ -879,9 +1437,9 @@ superagentsuperagen
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Edited on</span>
+                  <span class="post-meta-item-text">更新于</span>
                 
-                <time title="Modified: 2015-09-05 17:11:13" itemprop="dateModified" datetime="2015-09-05T17:11:13+08:00">2015-09-05</time>
+                <time title="修改时间：2015-09-05 17:11:13" itemprop="dateModified" datetime="2015-09-05T17:11:13+08:00">2015-09-05</time>
               
             
           </span>
@@ -895,28 +1453,28 @@ superagentsuperagen
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/electron/" itemprop="url" rel="index"><span itemprop="name">electron</span></a></span>
@@ -937,7 +1495,7 @@ superagentsuperagen
                   <i class="fa fa-comment-o"></i>
                 </span>
             
-                <span class="post-meta-item-text">Comments: </span>
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/build-application-with-angular-and-ng-material-based-on-electron-1-analyze-and-configuration/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="build-application-with-angular-and-ng-material-based-on-electron-1-analyze-and-configuration/" itemprop="commentCount"></span>
                 </a>
@@ -950,6 +1508,34 @@ superagentsuperagen
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">5 分钟</span>
+              
+            </div>
           
 
           
@@ -984,7 +1570,7 @@ superagentsuperagen
           
             <div class="post-button text-center">
               <a class="btn" href="/build-application-with-angular-and-ng-material-based-on-electron-1-analyze-and-configuration/#more" rel="contents">
-                Read more &raquo;
+                阅读全文 &raquo;
               </a>
             </div>
           
@@ -1043,12 +1629,12 @@ superagentsuperagen
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/build-application-with-angular-and-ng-material-based-on-electron-0-preface/">
+    <link itemprop="mainEntityOfPage" href="https://blog.e10t.net/build-application-with-angular-and-ng-material-based-on-electron-0-preface/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="exoticknight">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar_green.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1081,14 +1667,14 @@ superagentsuperagen
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2015-06-04 23:02:37" itemprop="dateCreated datePublished" datetime="2015-06-04T23:02:37+08:00">2015-06-04</time>
+              <time title="创建时间：2015-06-04 23:02:37" itemprop="dateCreated datePublished" datetime="2015-06-04T23:02:37+08:00">2015-06-04</time>
             
 
             
@@ -1103,9 +1689,9 @@ superagentsuperagen
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Edited on</span>
+                  <span class="post-meta-item-text">更新于</span>
                 
-                <time title="Modified: 2015-10-20 08:28:04" itemprop="dateModified" datetime="2015-10-20T08:28:04+08:00">2015-10-20</time>
+                <time title="修改时间：2015-10-20 08:28:04" itemprop="dateModified" datetime="2015-10-20T08:28:04+08:00">2015-10-20</time>
               
             
           </span>
@@ -1119,28 +1705,28 @@ superagentsuperagen
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/electron/" itemprop="url" rel="index"><span itemprop="name">electron</span></a></span>
@@ -1161,7 +1747,7 @@ superagentsuperagen
                   <i class="fa fa-comment-o"></i>
                 </span>
             
-                <span class="post-meta-item-text">Comments: </span>
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/build-application-with-angular-and-ng-material-based-on-electron-0-preface/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="build-application-with-angular-and-ng-material-based-on-electron-0-preface/" itemprop="commentCount"></span>
                 </a>
@@ -1174,6 +1760,34 @@ superagentsuperagen
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
           
 
           
@@ -1202,7 +1816,7 @@ superagentsuperagen
           
             <div class="post-button text-center">
               <a class="btn" href="/build-application-with-angular-and-ng-material-based-on-electron-0-preface/#more" rel="contents">
-                Read more &raquo;
+                阅读全文 &raquo;
               </a>
             </div>
           
@@ -1261,12 +1875,12 @@ superagentsuperagen
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/python-with-qt-application-development-catalogue/">
+    <link itemprop="mainEntityOfPage" href="https://blog.e10t.net/python-with-qt-application-development-catalogue/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="exoticknight">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar_green.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1299,14 +1913,14 @@ superagentsuperagen
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2015-06-04 22:54:21 / Modified: 22:54:50" itemprop="dateCreated datePublished" datetime="2015-06-04T22:54:21+08:00">2015-06-04</time>
+              <time title="创建时间：2015-06-04 22:54:21 / 修改时间：22:54:50" itemprop="dateCreated datePublished" datetime="2015-06-04T22:54:21+08:00">2015-06-04</time>
             
 
             
@@ -1325,28 +1939,28 @@ superagentsuperagen
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/软件/" itemprop="url" rel="index"><span itemprop="name">软件</span></a></span>
@@ -1367,7 +1981,7 @@ superagentsuperagen
                   <i class="fa fa-comment-o"></i>
                 </span>
             
-                <span class="post-meta-item-text">Comments: </span>
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/python-with-qt-application-development-catalogue/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="python-with-qt-application-development-catalogue/" itemprop="commentCount"></span>
                 </a>
@@ -1380,6 +1994,34 @@ superagentsuperagen
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">224</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
           
 
           
@@ -1400,18 +2042,18 @@ superagentsuperagen
         
           
             <p>
-              python × Qt 应用开发 · 0 – 序
-python × Qt 应用开发 · 1 – 基本界面
-python × Qt 应用开发 · 2 – 界面初步设计
-python × Qt 应用开发 · 2.5 – 改进软件界面
-python × Qt 应用开发 · 3 – MVC 中 model 
+              python × Qt 应用开发 · 0 — 序
+python × Qt 应用开发 · 1 — 基本界面
+python × Qt 应用开发 · 2 — 界面初步设计
+python × Qt 应用开发 · 2.5 — 改进软件界面
+python × Qt 应用开发 · 3 — MVC 中 model 
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
               <a class="btn" href="/python-with-qt-application-development-catalogue/#more" rel="contents">
-                Read more &raquo;
+                阅读全文 &raquo;
               </a>
             </div>
           
@@ -1470,12 +2112,12 @@ python × Qt 应用开发 · 3 – MVC 中 model
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/write-i18n-js-with-help-of-npm-as-build-tool/">
+    <link itemprop="mainEntityOfPage" href="https://blog.e10t.net/write-i18n-js-with-help-of-npm-as-build-tool/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="exoticknight">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar_green.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1508,14 +2150,14 @@ python × Qt 应用开发 · 3 – MVC 中 model
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2015-04-23 19:06:26" itemprop="dateCreated datePublished" datetime="2015-04-23T19:06:26+08:00">2015-04-23</time>
+              <time title="创建时间：2015-04-23 19:06:26" itemprop="dateCreated datePublished" datetime="2015-04-23T19:06:26+08:00">2015-04-23</time>
             
 
             
@@ -1530,9 +2172,9 @@ python × Qt 应用开发 · 3 – MVC 中 model
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Edited on</span>
+                  <span class="post-meta-item-text">更新于</span>
                 
-                <time title="Modified: 2015-04-25 14:00:30" itemprop="dateModified" datetime="2015-04-25T14:00:30+08:00">2015-04-25</time>
+                <time title="修改时间：2015-04-25 14:00:30" itemprop="dateModified" datetime="2015-04-25T14:00:30+08:00">2015-04-25</time>
               
             
           </span>
@@ -1546,28 +2188,28 @@ python × Qt 应用开发 · 3 – MVC 中 model
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
@@ -1588,7 +2230,7 @@ python × Qt 应用开发 · 3 – MVC 中 model
                   <i class="fa fa-comment-o"></i>
                 </span>
             
-                <span class="post-meta-item-text">Comments: </span>
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/write-i18n-js-with-help-of-npm-as-build-tool/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="write-i18n-js-with-help-of-npm-as-build-tool/" itemprop="commentCount"></span>
                 </a>
@@ -1601,6 +2243,34 @@ python × Qt 应用开发 · 3 – MVC 中 model
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">5.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">9 分钟</span>
+              
+            </div>
           
 
           
@@ -1629,7 +2299,7 @@ python × Qt 应用开发 · 3 – MVC 中 model
           
             <div class="post-button text-center">
               <a class="btn" href="/write-i18n-js-with-help-of-npm-as-build-tool/#more" rel="contents">
-                Read more &raquo;
+                阅读全文 &raquo;
               </a>
             </div>
           
@@ -1688,12 +2358,12 @@ python × Qt 应用开发 · 3 – MVC 中 model
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/radioit-plan-animate-radio-script-radioitscript/">
+    <link itemprop="mainEntityOfPage" href="https://blog.e10t.net/radioit-plan-animate-radio-script-radioitscript/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="exoticknight">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar_green.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1726,14 +2396,14 @@ python × Qt 应用开发 · 3 – MVC 中 model
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2015-03-23 20:25:53 / Modified: 20:27:02" itemprop="dateCreated datePublished" datetime="2015-03-23T20:25:53+08:00">2015-03-23</time>
+              <time title="创建时间：2015-03-23 20:25:53 / 修改时间：20:27:02" itemprop="dateCreated datePublished" datetime="2015-03-23T20:25:53+08:00">2015-03-23</time>
             
 
             
@@ -1752,28 +2422,28 @@ python × Qt 应用开发 · 3 – MVC 中 model
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/黑客/" itemprop="url" rel="index"><span itemprop="name">黑客</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
@@ -1794,7 +2464,7 @@ python × Qt 应用开发 · 3 – MVC 中 model
                   <i class="fa fa-comment-o"></i>
                 </span>
             
-                <span class="post-meta-item-text">Comments: </span>
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/radioit-plan-animate-radio-script-radioitscript/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="radioit-plan-animate-radio-script-radioitscript/" itemprop="commentCount"></span>
                 </a>
@@ -1807,6 +2477,34 @@ python × Qt 应用开发 · 3 – MVC 中 model
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
           
 
           
@@ -1835,7 +2533,7 @@ python × Qt 应用开发 · 3 – MVC 中 model
           
             <div class="post-button text-center">
               <a class="btn" href="/radioit-plan-animate-radio-script-radioitscript/#more" rel="contents">
-                Read more &raquo;
+                阅读全文 &raquo;
               </a>
             </div>
           
@@ -1894,12 +2592,12 @@ python × Qt 应用开发 · 3 – MVC 中 model
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/python-with-qt-application-development-2-5-developing-gui/">
+    <link itemprop="mainEntityOfPage" href="https://blog.e10t.net/python-with-qt-application-development-2-5-developing-gui/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="exoticknight">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar_green.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1932,14 +2630,14 @@ python × Qt 应用开发 · 3 – MVC 中 model
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2015-03-20 14:35:16 / Modified: 17:11:30" itemprop="dateCreated datePublished" datetime="2015-03-20T14:35:16+08:00">2015-03-20</time>
+              <time title="创建时间：2015-03-20 14:35:16 / 修改时间：17:11:30" itemprop="dateCreated datePublished" datetime="2015-03-20T14:35:16+08:00">2015-03-20</time>
             
 
             
@@ -1958,28 +2656,28 @@ python × Qt 应用开发 · 3 – MVC 中 model
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/软件/" itemprop="url" rel="index"><span itemprop="name">软件</span></a></span>
@@ -2000,7 +2698,7 @@ python × Qt 应用开发 · 3 – MVC 中 model
                   <i class="fa fa-comment-o"></i>
                 </span>
             
-                <span class="post-meta-item-text">Comments: </span>
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/python-with-qt-application-development-2-5-developing-gui/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="python-with-qt-application-development-2-5-developing-gui/" itemprop="commentCount"></span>
                 </a>
@@ -2013,6 +2711,34 @@ python × Qt 应用开发 · 3 – MVC 中 model
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
           
 
           
@@ -2042,482 +2768,7 @@ python × Qt 应用开发 · 3 – MVC 中 model
           
             <div class="post-button text-center">
               <a class="btn" href="/python-with-qt-application-development-2-5-developing-gui/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/tour-photo-hangzhou/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="exoticknight">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="exoticknight's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/tour-photo-hangzhou/" class="post-title-link" itemprop="url">旅游照——杭州 [21p]</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2015-01-31 22:57:41" itemprop="dateCreated datePublished" datetime="2015-01-31T22:57:41+08:00">2015-01-31</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/生活/" itemprop="url" rel="index"><span itemprop="name">生活</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/摄影/" itemprop="url" rel="index"><span itemprop="name">摄影</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/摄影/旅游/" itemprop="url" rel="index"><span itemprop="name">旅游</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/生活/旅游/" itemprop="url" rel="index"><span itemprop="name">旅游</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">Comments: </span>
-                <a href="/tour-photo-hangzhou/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="tour-photo-hangzhou/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              第一天的上海
-第二天的苏州和乌镇晚上
-第三天的乌镇和杭州
-这次的重点不在杭州，所以西湖根本游不完。天气也很差，有雾，拍出来灰蒙蒙的。后期也不怎么会，将就着看吧。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-              
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/tour-photo-hangzhou/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/tour-photo-wuzhen-hangzhou/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="exoticknight">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="exoticknight's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/tour-photo-wuzhen-hangzhou/" class="post-title-link" itemprop="url">旅游照——乌镇 & 杭州 [53p]</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2015-01-31 21:32:09 / Modified: 22:55:47" itemprop="dateCreated datePublished" datetime="2015-01-31T21:32:09+08:00">2015-01-31</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/生活/" itemprop="url" rel="index"><span itemprop="name">生活</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/摄影/" itemprop="url" rel="index"><span itemprop="name">摄影</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/摄影/旅游/" itemprop="url" rel="index"><span itemprop="name">旅游</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/生活/旅游/" itemprop="url" rel="index"><span itemprop="name">旅游</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">Comments: </span>
-                <a href="/tour-photo-wuzhen-hangzhou/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="tour-photo-wuzhen-hangzhou/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              第一天的上海
-第二天的苏州和乌镇晚上
-第三天早上在乌镇。早早起来拍摄。
-不太会后期，都是相机 jpg 直出了。
-
-
-
-
-冷到有霜。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-早晨的乌镇真是美极了。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-住的酒店叫做昭明书社。在外面拍完照回到房间，刚好看到窗边的一缕阳光照到盒子上
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/tour-photo-wuzhen-hangzhou/#more" rel="contents">
-                Read more &raquo;
+                阅读全文 &raquo;
               </a>
             </div>
           
@@ -2565,7 +2816,7 @@ python × Qt 应用开发 · 3 – MVC 中 model
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2596,6 +2847,8 @@ python × Qt 应用开发 · 3 – MVC 中 model
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/avatar_green.png" alt="exoticknight">
+            
               <p class="site-author-name" itemprop="name">exoticknight</p>
               <div class="site-description motion-element" itemprop="description"></div>
           </div>
@@ -2607,8 +2860,8 @@ python × Qt 应用开发 · 3 – MVC 中 model
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">51</span>
-                    <span class="site-state-item-name">posts</span>
+                    <span class="site-state-item-count">53</span>
+                    <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
               
@@ -2674,8 +2927,12 @@ python × Qt 应用开发 · 3 – MVC 中 model
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
-                    <span class="site-state-item-name">categories</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
               
@@ -2781,8 +3038,14 @@ python × Qt 应用开发 · 3 – MVC 中 model
                     
                       
                     
-                    <span class="site-state-item-count">45</span>
-                    <span class="site-state-item-name">tags</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
               
@@ -2895,6 +3158,13 @@ python × Qt 应用开发 · 3 – MVC 中 model
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -2914,12 +3184,26 @@ python × Qt 应用开发 · 3 – MVC 中 model
   <span class="author" itemprop="copyrightHolder">exoticknight</span>
 
   
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">135k</span>
+  
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">3:44</span>
   
 </div>
 
 
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
 
 
 
@@ -2927,7 +3211,7 @@ python × Qt 应用开发 · 3 – MVC 中 model
 
 
 
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
 
 
 
@@ -2946,12 +3230,13 @@ python × Qt 应用开发 · 3 – MVC 中 model
     </footer>
 
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
 
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
     
 
     
@@ -2971,12 +3256,16 @@ python × Qt 应用开发 · 3 – MVC 中 model
 
 
 
+  
 
 
 
 
 
 
+
+
+  
 
 
 
@@ -2990,20 +3279,33 @@ python × Qt 应用开发 · 3 – MVC 中 model
 
   
   
-  <script id="ribbon" size="300" alpha="0.6" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
-
-
+    
+  
+  <script id="ribbon" size="300" alpha="0.6" zindex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
 
 
 
   
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+
 
   
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
   
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-reading-progress@1/reading_progress.min.js"></script>
 
 
   
@@ -3039,6 +3341,36 @@ python × Qt 应用开发 · 3 – MVC 中 model
   
 
   
+  
+  
+    
+  
+
+  
+    
+      
+    
+  
+
+  
+  
+  
+    <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+    <script>
+      
+        window.addEventListener('load', () => {
+      
+        quicklink({
+          timeout: 3000,
+          priority: true,
+          ignores: [uri => uri.includes('#'),uri => uri == 'https://blog.e10t.net/page/2/',]
+        });
+      
+        });
+      
+    </script>
+  
+
 
   
   
@@ -3413,20 +3745,130 @@ python × Qt 应用开发 · 3 – MVC 中 model
   
 
   
+<script>
+if ($('body').find('pre.mermaid').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdnjs.cloudflare.com/ajax/libs/mermaid/8.0.0/mermaid.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      mermaid.initialize({
+        theme: 'forest',
+        logLevel: 3,
+        flowchart: { curve: 'linear' },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 }
+      });
+    }
+  });
+}
+</script>
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js"></script>
+  <script>
+    
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "box";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook,Linkedin,Reddit,Delicious,Pinterest,Evernote";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+        flOptions.iconStyle = "box";
+      
+        flOptions.boxForm = "horizontal";
+      
+        flOptions.position = "middleRight";
+      
+        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook,Linkedin,Reddit,Delicious,Pinterest,Evernote";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
 
   
 
   
 
   
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-bookmark@1/bookmark.min.js"></script>
+  <script>
+  
+    bookmark.loadBookmark();
+  
+  </script>
+
 
   
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
 
-  
-
-  
-
-  
 
   
 

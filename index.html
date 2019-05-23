@@ -12,7 +12,7 @@
 
 
 
-<html class="theme-next gemini" lang="中文, English, 日本语">
+<html class="theme-next gemini" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,6 +20,31 @@
 <meta name="theme-color" content="#222">
 
 
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css">
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-minimal.min.css">
+
+
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -31,6 +56,11 @@
 
 
 
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.css">
 
 
 
@@ -38,27 +68,29 @@
 
 
 
+  
 
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css">
 
 <link rel="stylesheet" href="/css/main.css?v=7.1.1">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png?v=7.1.1">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png?v=7.1.1">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png?v=7.1.1">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+  <link rel="mask-icon" href="/images/favicon/logo.svg?v=7.1.1" color="#222">
 
 
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+
+
+  <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
 
 
 
@@ -72,9 +104,9 @@
     version: '7.1.1',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
-    back2top_sidebar: false,
-    fancybox: false,
-    fastclick: false,
+    back2top_sidebar: true,
+    fancybox: true,
+    fastclick: true,
     lazyload: false,
     tabs: true,
     motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -97,9 +129,9 @@
   <meta name="keywords" content="IT, frontend">
 <meta property="og:type" content="website">
 <meta property="og:title" content="exoticknight&#39;s blog">
-<meta property="og:url" content="https://www.e10t.net/index.html">
+<meta property="og:url" content="https://blog.e10t.net/index.html">
 <meta property="og:site_name" content="exoticknight&#39;s blog">
-<meta property="og:locale" content="中文, English, 日本语">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="exoticknight&#39;s blog">
 
@@ -111,7 +143,7 @@
 
   
   
-  <link rel="canonical" href="https://www.e10t.net/">
+  <link rel="canonical" href="https://blog.e10t.net/">
 
 
 
@@ -173,7 +205,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="中文, English, 日本语">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -205,7 +237,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -233,7 +265,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
         
@@ -250,7 +282,7 @@
 
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
         
@@ -267,7 +299,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
 
   </li>
         
@@ -284,7 +316,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
 
   </li>
         
@@ -301,7 +333,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
 
@@ -312,7 +344,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
         </li>
       
     </ul>
@@ -332,7 +364,7 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -389,12 +421,477 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/dont-only-use-for-any-more/">
+    <link itemprop="mainEntityOfPage" href="https://blog.e10t.net/learn-ancient-egyptian-gods-in-5-minutes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="exoticknight">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar_green.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="exoticknight's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/learn-ancient-egyptian-gods-in-5-minutes/" class="post-title-link" itemprop="url">5 分钟速成古埃及神明</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-21 22:18:29" itemprop="dateCreated datePublished" datetime="2019-05-21T22:18:29+08:00">2019-05-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-23 21:24:27" itemprop="dateModified" datetime="2019-05-23T21:24:27+08:00">2019-05-23</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/知识/" itemprop="url" rel="index"><span itemprop="name">知识</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/知识/古埃及/" itemprop="url" rel="index"><span itemprop="name">古埃及</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/learn-ancient-egyptian-gods-in-5-minutes/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="learn-ancient-egyptian-gods-in-5-minutes/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              古埃及的宗教是多神教，他们认为自然现象、客观事物甚至动物，都存在神明。在新王国时期法老阿肯那顿将阿顿作为唯一神，古埃及曾短暂地存在一神教时期。这部分详细可以阅读30 分钟速成古埃及历史。
+三千年的存在时间和政权的多次更迭造成古埃及神明种类繁多，系统复杂，甚至可能互相矛盾，但总的来说有三个神话系统。
+
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/learn-ancient-egyptian-gods-in-5-minutes/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.e10t.net/learn-ancient-egyptian-history-in-30-minutes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="exoticknight">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar_green.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="exoticknight's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/learn-ancient-egyptian-history-in-30-minutes/" class="post-title-link" itemprop="url">30 分钟速成古埃及历史</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-15 20:46:26" itemprop="dateCreated datePublished" datetime="2019-05-15T20:46:26+08:00">2019-05-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-23 16:26:12" itemprop="dateModified" datetime="2019-05-23T16:26:12+08:00">2019-05-23</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/知识/" itemprop="url" rel="index"><span itemprop="name">知识</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/知识/古埃及/" itemprop="url" rel="index"><span itemprop="name">古埃及</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/learn-ancient-egyptian-history-in-30-minutes/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="learn-ancient-egyptian-history-in-30-minutes/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">15k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">25 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              前几天在 bilibili 上看了一个 up 主的埃及旅游系列 vlog，了解了一些关于古埃及历史的知识，再通过维基什么学习，写下本文以做笔记。
+本文基本来源中英文维基，英文为主中文为辅，精简了大量不太重要的细节，比较适合快速了解和学习古埃及历史。如果对内容有什么疑问或者质疑，请务必留下评论或者联系
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/learn-ancient-egyptian-history-in-30-minutes/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.e10t.net/dont-only-use-for-any-more/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="exoticknight">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar_green.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -427,14 +924,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2017-10-23 23:54:14" itemprop="dateCreated datePublished" datetime="2017-10-23T23:54:14+08:00">2017-10-23</time>
+              <time title="创建时间：2017-10-23 23:54:14" itemprop="dateCreated datePublished" datetime="2017-10-23T23:54:14+08:00">2017-10-23</time>
             
 
             
@@ -449,9 +946,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Edited on</span>
+                  <span class="post-meta-item-text">更新于</span>
                 
-                <time title="Modified: 2019-05-15 17:39:16" itemprop="dateModified" datetime="2019-05-15T17:39:16+08:00">2019-05-15</time>
+                <time title="修改时间：2019-05-22 17:09:17" itemprop="dateModified" datetime="2019-05-22T17:09:17+08:00">2019-05-22</time>
               
             
           </span>
@@ -465,28 +962,28 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
@@ -507,7 +1004,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
             
-                <span class="post-meta-item-text">Comments: </span>
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/dont-only-use-for-any-more/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="dont-only-use-for-any-more/" itemprop="commentCount"></span>
                 </a>
@@ -520,6 +1017,34 @@
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">5 分钟</span>
+              
+            </div>
           
 
           
@@ -554,7 +1079,7 @@ for ([initialization]; [condition]; [final-
           
             <div class="post-button text-center">
               <a class="btn" href="/dont-only-use-for-any-more/#more" rel="contents">
-                Read more &raquo;
+                阅读全文 &raquo;
               </a>
             </div>
           
@@ -613,12 +1138,12 @@ for ([initialization]; [condition]; [final-
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/mocha-chai-istanbul-in-es2015/">
+    <link itemprop="mainEntityOfPage" href="https://blog.e10t.net/mocha-chai-istanbul-in-es2015/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="exoticknight">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar_green.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -651,14 +1176,14 @@ for ([initialization]; [condition]; [final-
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2017-08-06 15:20:41 / Modified: 15:45:21" itemprop="dateCreated datePublished" datetime="2017-08-06T15:20:41+08:00">2017-08-06</time>
+              <time title="创建时间：2017-08-06 15:20:41 / 修改时间：15:45:21" itemprop="dateCreated datePublished" datetime="2017-08-06T15:20:41+08:00">2017-08-06</time>
             
 
             
@@ -677,28 +1202,28 @@ for ([initialization]; [condition]; [final-
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
@@ -719,7 +1244,7 @@ for ([initialization]; [condition]; [final-
                   <i class="fa fa-comment-o"></i>
                 </span>
             
-                <span class="post-meta-item-text">Comments: </span>
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/mocha-chai-istanbul-in-es2015/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="mocha-chai-istanbul-in-es2015/" itemprop="commentCount"></span>
                 </a>
@@ -732,6 +1257,34 @@ for ([initialization]; [condition]; [final-
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.8k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
           
 
           
@@ -759,7 +1312,7 @@ for ([initialization]; [condition]; [final-
           
             <div class="post-button text-center">
               <a class="btn" href="/mocha-chai-istanbul-in-es2015/#more" rel="contents">
-                Read more &raquo;
+                阅读全文 &raquo;
               </a>
             </div>
           
@@ -818,12 +1371,12 @@ for ([initialization]; [condition]; [final-
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/talk-about-a-question-in-nowcoder/">
+    <link itemprop="mainEntityOfPage" href="https://blog.e10t.net/talk-about-a-question-in-nowcoder/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="exoticknight">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar_green.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -856,14 +1409,14 @@ for ([initialization]; [condition]; [final-
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2016-12-13 20:48:11" itemprop="dateCreated datePublished" datetime="2016-12-13T20:48:11+08:00">2016-12-13</time>
+              <time title="创建时间：2016-12-13 20:48:11" itemprop="dateCreated datePublished" datetime="2016-12-13T20:48:11+08:00">2016-12-13</time>
             
 
             
@@ -878,28 +1431,28 @@ for ([initialization]; [condition]; [final-
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/黑客/" itemprop="url" rel="index"><span itemprop="name">黑客</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
@@ -920,7 +1473,7 @@ for ([initialization]; [condition]; [final-
                   <i class="fa fa-comment-o"></i>
                 </span>
             
-                <span class="post-meta-item-text">Comments: </span>
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/talk-about-a-question-in-nowcoder/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="talk-about-a-question-in-nowcoder/" itemprop="commentCount"></span>
                 </a>
@@ -933,6 +1486,34 @@ for ([initialization]; [condition]; [final-
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.4k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
           
 
           
@@ -961,7 +1542,7 @@ for ([initialization]; [condition]; [final-
           
             <div class="post-button text-center">
               <a class="btn" href="/talk-about-a-question-in-nowcoder/#more" rel="contents">
-                Read more &raquo;
+                阅读全文 &raquo;
               </a>
             </div>
           
@@ -1020,12 +1601,12 @@ for ([initialization]; [condition]; [final-
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/fictioninjection-series-analyze-angular-dependence-injection-and-extract-it-part-1/">
+    <link itemprop="mainEntityOfPage" href="https://blog.e10t.net/fictioninjection-series-analyze-angular-dependence-injection-and-extract-it-part-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="exoticknight">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar_green.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1058,14 +1639,14 @@ for ([initialization]; [condition]; [final-
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2016-05-12 13:56:53" itemprop="dateCreated datePublished" datetime="2016-05-12T13:56:53+08:00">2016-05-12</time>
+              <time title="创建时间：2016-05-12 13:56:53" itemprop="dateCreated datePublished" datetime="2016-05-12T13:56:53+08:00">2016-05-12</time>
             
 
             
@@ -1080,9 +1661,9 @@ for ([initialization]; [condition]; [final-
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Edited on</span>
+                  <span class="post-meta-item-text">更新于</span>
                 
-                <time title="Modified: 2016-11-08 15:58:22" itemprop="dateModified" datetime="2016-11-08T15:58:22+08:00">2016-11-08</time>
+                <time title="修改时间：2016-11-08 15:58:22" itemprop="dateModified" datetime="2016-11-08T15:58:22+08:00">2016-11-08</time>
               
             
           </span>
@@ -1096,28 +1677,28 @@ for ([initialization]; [condition]; [final-
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
@@ -1138,7 +1719,7 @@ for ([initialization]; [condition]; [final-
                   <i class="fa fa-comment-o"></i>
                 </span>
             
-                <span class="post-meta-item-text">Comments: </span>
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/fictioninjection-series-analyze-angular-dependence-injection-and-extract-it-part-1/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="fictioninjection-series-analyze-angular-dependence-injection-and-extract-it-part-1/" itemprop="commentCount"></span>
                 </a>
@@ -1151,6 +1732,34 @@ for ([initialization]; [condition]; [final-
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">5.8k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">10 分钟</span>
+              
+            </div>
           
 
           
@@ -1179,7 +1788,7 @@ for ([initialization]; [condition]; [final-
           
             <div class="post-button text-center">
               <a class="btn" href="/fictioninjection-series-analyze-angular-dependence-injection-and-extract-it-part-1/#more" rel="contents">
-                Read more &raquo;
+                阅读全文 &raquo;
               </a>
             </div>
           
@@ -1238,12 +1847,12 @@ for ([initialization]; [condition]; [final-
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/watch-sherlock-the-abominable-bride/">
+    <link itemprop="mainEntityOfPage" href="https://blog.e10t.net/watch-sherlock-the-abominable-bride/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="exoticknight">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar_green.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1276,14 +1885,14 @@ for ([initialization]; [condition]; [final-
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2016-01-05 19:48:23 / Modified: 19:49:41" itemprop="dateCreated datePublished" datetime="2016-01-05T19:48:23+08:00">2016-01-05</time>
+              <time title="创建时间：2016-01-05 19:48:23 / 修改时间：19:49:41" itemprop="dateCreated datePublished" datetime="2016-01-05T19:48:23+08:00">2016-01-05</time>
             
 
             
@@ -1302,14 +1911,14 @@ for ([initialization]; [condition]; [final-
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/生活/" itemprop="url" rel="index"><span itemprop="name">生活</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/生活/电影/" itemprop="url" rel="index"><span itemprop="name">电影</span></a></span>
@@ -1330,7 +1939,7 @@ for ([initialization]; [condition]; [final-
                   <i class="fa fa-comment-o"></i>
                 </span>
             
-                <span class="post-meta-item-text">Comments: </span>
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/watch-sherlock-the-abominable-bride/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="watch-sherlock-the-abominable-bride/" itemprop="commentCount"></span>
                 </a>
@@ -1343,6 +1952,34 @@ for ([initialization]; [condition]; [final-
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
           
 
           
@@ -1373,7 +2010,7 @@ PS: 如果你是想看好莱坞大片，还像和我同一片场的人那样带�
           
             <div class="post-button text-center">
               <a class="btn" href="/watch-sherlock-the-abominable-bride/#more" rel="contents">
-                Read more &raquo;
+                阅读全文 &raquo;
               </a>
             </div>
           
@@ -1432,12 +2069,12 @@ PS: 如果你是想看好莱坞大片，还像和我同一片场的人那样带�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/single-bell-2015/">
+    <link itemprop="mainEntityOfPage" href="https://blog.e10t.net/single-bell-2015/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="exoticknight">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar_green.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1470,14 +2107,14 @@ PS: 如果你是想看好莱坞大片，还像和我同一片场的人那样带�
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2015-12-25 17:02:32" itemprop="dateCreated datePublished" datetime="2015-12-25T17:02:32+08:00">2015-12-25</time>
+              <time title="创建时间：2015-12-25 17:02:32" itemprop="dateCreated datePublished" datetime="2015-12-25T17:02:32+08:00">2015-12-25</time>
             
 
             
@@ -1492,14 +2129,14 @@ PS: 如果你是想看好莱坞大片，还像和我同一片场的人那样带�
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
@@ -1520,7 +2157,7 @@ PS: 如果你是想看好莱坞大片，还像和我同一片场的人那样带�
                   <i class="fa fa-comment-o"></i>
                 </span>
             
-                <span class="post-meta-item-text">Comments: </span>
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/single-bell-2015/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="single-bell-2015/" itemprop="commentCount"></span>
                 </a>
@@ -1533,6 +2170,34 @@ PS: 如果你是想看好莱坞大片，还像和我同一片场的人那样带�
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">89</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
           
 
           
@@ -1563,7 +2228,7 @@ PS: 如果你是想看好莱坞大片，还像和我同一片场的人那样带�
           
             <div class="post-button text-center">
               <a class="btn" href="/single-bell-2015/#more" rel="contents">
-                Read more &raquo;
+                阅读全文 &raquo;
               </a>
             </div>
           
@@ -1622,12 +2287,12 @@ PS: 如果你是想看好莱坞大片，还像和我同一片场的人那样带�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/write-a-game-of-life-using-es6/">
+    <link itemprop="mainEntityOfPage" href="https://blog.e10t.net/write-a-game-of-life-using-es6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="exoticknight">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar_green.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1660,14 +2325,14 @@ PS: 如果你是想看好莱坞大片，还像和我同一片场的人那样带�
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2015-11-27 00:38:57 / Modified: 12:31:33" itemprop="dateCreated datePublished" datetime="2015-11-27T00:38:57+08:00">2015-11-27</time>
+              <time title="创建时间：2015-11-27 00:38:57 / 修改时间：12:31:33" itemprop="dateCreated datePublished" datetime="2015-11-27T00:38:57+08:00">2015-11-27</time>
             
 
             
@@ -1686,28 +2351,28 @@ PS: 如果你是想看好莱坞大片，还像和我同一片场的人那样带�
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
@@ -1728,7 +2393,7 @@ PS: 如果你是想看好莱坞大片，还像和我同一片场的人那样带�
                   <i class="fa fa-comment-o"></i>
                 </span>
             
-                <span class="post-meta-item-text">Comments: </span>
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/write-a-game-of-life-using-es6/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="write-a-game-of-life-using-es6/" itemprop="commentCount"></span>
                 </a>
@@ -1741,6 +2406,34 @@ PS: 如果你是想看好莱坞大片，还像和我同一片场的人那样带�
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">6 分钟</span>
+              
+            </div>
           
 
           
@@ -1772,7 +2465,7 @@ GitHub 地址
           
             <div class="post-button text-center">
               <a class="btn" href="/write-a-game-of-life-using-es6/#more" rel="contents">
-                Read more &raquo;
+                阅读全文 &raquo;
               </a>
             </div>
           
@@ -1831,12 +2524,12 @@ GitHub 地址
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/understanding-ecmascript6-note/">
+    <link itemprop="mainEntityOfPage" href="https://blog.e10t.net/understanding-ecmascript6-note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="exoticknight">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar_green.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1869,14 +2562,14 @@ GitHub 地址
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2015-10-21 22:17:05" itemprop="dateCreated datePublished" datetime="2015-10-21T22:17:05+08:00">2015-10-21</time>
+              <time title="创建时间：2015-10-21 22:17:05" itemprop="dateCreated datePublished" datetime="2015-10-21T22:17:05+08:00">2015-10-21</time>
             
 
             
@@ -1891,9 +2584,9 @@ GitHub 地址
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Edited on</span>
+                  <span class="post-meta-item-text">更新于</span>
                 
-                <time title="Modified: 2015-11-06 14:44:52" itemprop="dateModified" datetime="2015-11-06T14:44:52+08:00">2015-11-06</time>
+                <time title="修改时间：2015-11-06 14:44:52" itemprop="dateModified" datetime="2015-11-06T14:44:52+08:00">2015-11-06</time>
               
             
           </span>
@@ -1907,28 +2600,28 @@ GitHub 地址
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
 
                 
                 
-                  , 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
@@ -1949,7 +2642,7 @@ GitHub 地址
                   <i class="fa fa-comment-o"></i>
                 </span>
             
-                <span class="post-meta-item-text">Comments: </span>
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/understanding-ecmascript6-note/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="understanding-ecmascript6-note/" itemprop="commentCount"></span>
                 </a>
@@ -1962,6 +2655,34 @@ GitHub 地址
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">6 分钟</span>
+              
+            </div>
           
 
           
@@ -1984,8 +2705,6 @@ GitHub 地址
             <p>
               
 在线免费阅读：https://leanpub.com/understandinges6/read/
-
-
 部分代码使用原书，代码版权归原书所有
 
 
@@ -1995,428 +2714,14 @@ GitHub 地址
 正则
 字符串模板（template strings）
 标签模板（tagged templates）
-
+函数
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
               <a class="btn" href="/understanding-ecmascript6-note/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/mocha-chai-travis-ci-codecov-workflow/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="exoticknight">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="exoticknight's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/mocha-chai-travis-ci-codecov-workflow/" class="post-title-link" itemprop="url">mocha + chai + Travis CI + Codecov 使用流程</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2015-09-24 23:29:00 / Modified: 23:31:01" itemprop="dateCreated datePublished" datetime="2015-09-24T23:29:00+08:00">2015-09-24</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">Comments: </span>
-                <a href="/mocha-chai-travis-ci-codecov-workflow/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="mocha-chai-travis-ci-codecov-workflow/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              mochaa feature-rich JavaScript test framework running on Node.js and the browser
-chaia BDD / TDD assertion library for node and the browser that can b
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/mocha-chai-travis-ci-codecov-workflow/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.e10t.net/build-application-with-angular-and-ng-material-based-on-electron-3-file-structure-and-workflow/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="exoticknight">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="exoticknight's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/build-application-with-angular-and-ng-material-based-on-electron-3-file-structure-and-workflow/" class="post-title-link" itemprop="url">配合 angular 和 angular-material 来开发基于 electron 的应用 · 3-- 文件组织结构和开发流程</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2015-09-05 17:09:13 / Modified: 17:10:15" itemprop="dateCreated datePublished" datetime="2015-09-05T17:09:13+08:00">2015-09-05</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/electron/" itemprop="url" rel="index"><span itemprop="name">electron</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">Comments: </span>
-                <a href="/build-application-with-angular-and-ng-material-based-on-electron-3-file-structure-and-workflow/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="build-application-with-angular-and-ng-material-based-on-electron-3-file-structure-and-workflow/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              文件组织结构良好的文件组织结构不仅能帮助我们更快地定位文件，更能配合开发工具形成流畅的开发流程，从而提高编程效率。
-以下的目录和文件都放在存放应用的根目录 app 下。
-package.jsonElectron 应用的配置文件，经常做 node 开发的人应该很熟悉了。稍微说明一下一些字段：
-name
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/build-application-with-angular-and-ng-material-based-on-electron-3-file-structure-and-workflow/#more" rel="contents">
-                Read more &raquo;
+                阅读全文 &raquo;
               </a>
             </div>
           
@@ -2464,7 +2769,7 @@ name
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2495,6 +2800,8 @@ name
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/avatar_green.png" alt="exoticknight">
+            
               <p class="site-author-name" itemprop="name">exoticknight</p>
               <div class="site-description motion-element" itemprop="description"></div>
           </div>
@@ -2506,8 +2813,8 @@ name
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">51</span>
-                    <span class="site-state-item-name">posts</span>
+                    <span class="site-state-item-count">53</span>
+                    <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
               
@@ -2573,8 +2880,12 @@ name
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
-                    <span class="site-state-item-name">categories</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
               
@@ -2680,8 +2991,14 @@ name
                     
                       
                     
-                    <span class="site-state-item-count">45</span>
-                    <span class="site-state-item-name">tags</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
               
@@ -2794,6 +3111,13 @@ name
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -2813,12 +3137,26 @@ name
   <span class="author" itemprop="copyrightHolder">exoticknight</span>
 
   
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">135k</span>
+  
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">3:44</span>
   
 </div>
 
 
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
 
 
 
@@ -2826,7 +3164,7 @@ name
 
 
 
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
 
 
 
@@ -2845,12 +3183,13 @@ name
     </footer>
 
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
 
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
     
 
     
@@ -2870,12 +3209,16 @@ name
 
 
 
+  
 
 
 
 
 
 
+
+
+  
 
 
 
@@ -2889,20 +3232,33 @@ name
 
   
   
-  <script id="ribbon" size="300" alpha="0.6" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
-
-
+    
+  
+  <script id="ribbon" size="300" alpha="0.6" zindex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
 
 
 
   
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+
 
   
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
   
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-reading-progress@1/reading_progress.min.js"></script>
 
 
   
@@ -2938,6 +3294,36 @@ name
   
 
   
+  
+  
+    
+  
+
+  
+    
+      
+    
+  
+
+  
+  
+  
+    <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+    <script>
+      
+        window.addEventListener('load', () => {
+      
+        quicklink({
+          timeout: 3000,
+          priority: true,
+          ignores: [uri => uri.includes('#'),uri => uri == 'https://blog.e10t.net/',]
+        });
+      
+        });
+      
+    </script>
+  
+
 
   
   
@@ -3312,20 +3698,130 @@ name
   
 
   
+<script>
+if ($('body').find('pre.mermaid').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdnjs.cloudflare.com/ajax/libs/mermaid/8.0.0/mermaid.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      mermaid.initialize({
+        theme: 'forest',
+        logLevel: 3,
+        flowchart: { curve: 'linear' },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 }
+      });
+    }
+  });
+}
+</script>
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js"></script>
+  <script>
+    
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "box";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook,Linkedin,Reddit,Delicious,Pinterest,Evernote";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+        flOptions.iconStyle = "box";
+      
+        flOptions.boxForm = "horizontal";
+      
+        flOptions.position = "middleRight";
+      
+        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook,Linkedin,Reddit,Delicious,Pinterest,Evernote";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
 
   
 
   
 
   
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-bookmark@1/bookmark.min.js"></script>
+  <script>
+  
+    bookmark.loadBookmark();
+  
+  </script>
+
 
   
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
 
-  
-
-  
-
-  
 
   
 
