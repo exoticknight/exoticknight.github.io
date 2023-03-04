@@ -1,0 +1,2004 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next gemini" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css">
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-minimal.min.css">
+
+
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.css">
+
+
+
+
+
+
+
+  
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/favicon/logo.svg?v=7.1.1" color="#222">
+
+
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+
+
+  <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: true,
+    fastclick: true,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="GitHub 地址   缘起前段时间看了《Understanding ECMAScript 6》，因为有 JavaScript 的基础，很快就上手了，还写了 笔记。然而编程只看书是不够的，还需要让身体熟悉起来。刚好最近在看「全部成为 F」这部新番，看到 ED 采用了「生命游戏」的表现形式，于是便有了用 ES6 来写一个的主意。 「生命游戏」「生命游戏」的英文原文是「Game of Life」，是">
+<meta name="keywords" content="javascript,ECMAScript6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 ES6 编写一个生命游戏">
+<meta property="og:url" content="https://blog.e10t.net/write-a-game-of-life-using-es6/index.html">
+<meta property="og:site_name" content="exoticknight&#39;s blog">
+<meta property="og:description" content="GitHub 地址   缘起前段时间看了《Understanding ECMAScript 6》，因为有 JavaScript 的基础，很快就上手了，还写了 笔记。然而编程只看书是不够的，还需要让身体熟悉起来。刚好最近在看「全部成为 F」这部新番，看到 ED 采用了「生命游戏」的表现形式，于是便有了用 ES6 来写一个的主意。 「生命游戏」「生命游戏」的英文原文是「Game of Life」，是">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.imgur.com/fLKUaVL.gif">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/e/e5/Gospers_glider_gun.gif">
+<meta property="og:updated_time" content="2015-11-27T04:31:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用 ES6 编写一个生命游戏">
+<meta name="twitter:description" content="GitHub 地址   缘起前段时间看了《Understanding ECMAScript 6》，因为有 JavaScript 的基础，很快就上手了，还写了 笔记。然而编程只看书是不够的，还需要让身体熟悉起来。刚好最近在看「全部成为 F」这部新番，看到 ED 采用了「生命游戏」的表现形式，于是便有了用 ES6 来写一个的主意。 「生命游戏」「生命游戏」的英文原文是「Game of Life」，是">
+<meta name="twitter:image" content="https://i.imgur.com/fLKUaVL.gif">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="exoticknight's blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://blog.e10t.net/write-a-game-of-life-using-es6/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>使用 ES6 编写一个生命游戏 | exoticknight's blog</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-56129336-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-56129336-1');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">exoticknight's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">年寿有时而尽，荣乐止乎其身，二者必至之常期，未若文章之无穷</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/exoticknight" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.e10t.net/write-a-game-of-life-using-es6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="exoticknight">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar_green.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="exoticknight's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">使用 ES6 编写一个生命游戏
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-11-27 00:38:57 / 修改时间：12:31:33" itemprop="dateCreated datePublished" datetime="2015-11-27T00:38:57+08:00">2015-11-27</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/write-a-game-of-life-using-es6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="write-a-game-of-life-using-es6/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.4k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">6 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p><a href="https://github.com/exoticknight/gol.js" target="_blank" rel="noopener">GitHub 地址</a></p>
+</blockquote>
+<p><img src="https://i.imgur.com/fLKUaVL.gif" alt="gif"></p>
+<h2 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h2><p>前段时间看了《Understanding ECMAScript 6》，因为有 JavaScript 的基础，很快就上手了，还写了 <a href="http://blog.e10t.net/understanding-ecmascript6-note/">笔记</a>。然而编程只看书是不够的，还需要让身体熟悉起来。刚好最近在看「全部成为 F」这部新番，看到 ED 采用了「生命游戏」的表现形式，于是便有了用 ES6 来写一个的主意。</p>
+<h2 id="「生命游戏」"><a href="#「生命游戏」" class="headerlink" title="「生命游戏」"></a>「生命游戏」</h2><p>「生命游戏」的英文原文是「Game of Life」，是细胞自动机的一种形式，每个细胞的未来状态只取决于以其为中心周围八格细胞的当前状态。更详细的信息请看 <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank" rel="noopener">wiki 条目</a>，给出一个有意思的动画图。</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Gospers_glider_gun.gif" alt="gif 动画图"></p>
+<p>而状态判断只有四条：</p>
+<ol>
+<li>当前细胞为存活状态时，当周围低于 2 个（不包含 2 个）存活细胞时， 该细胞变成死亡状态。（模拟生命数量稀少）</li>
+<li>当前细胞为存活状态时，当周围有 2 个或 3 个存活细胞时， 该细胞保持原样。</li>
+<li>当前细胞为存活状态时，当周围有 3 个以上的存活细胞时，该细胞变成死亡状态。（模拟生命数量过多）</li>
+<li>当前细胞为死亡状态时，当周围有 3 个存活细胞时，该细胞变成存活状态。 （模拟繁殖）</li>
+</ol>
+<h3 id="算法思考"><a href="#算法思考" class="headerlink" title="算法思考"></a>算法思考</h3><p>假设有一个棋盘，每一个格子代表一个细胞。在每一次生成下一代细胞，先遍历每一个细胞，查询它周围八格细胞的状态，设置本细胞下一代的状态。</p>
+<p>显然这样的算法基本毫无意义，因为显然棋盘是不定大小的，细胞也不是每一代都一定会变化的，遍历整个棋盘也是浪费时间的。</p>
+<p>实际上，发生变化或者有可能发生变化的细胞，基本是聚集在活细胞周围的。如果一个死细胞附近没有活细胞，那么这个细胞就不会发生变化。所以，可以换个思路，每一个曾经活过或者在活细胞周围的细胞都维持一个它的邻居细胞的数目记录。每当一个细胞活过来了，就通知周围八格的细胞，让它们的活邻居细胞的数目记录增加 1；相反每当一个细胞死了，就通知周围八格的细胞，让它们的活邻居细胞的数目记录减少 1。显然在更新完之后，周围八格的细胞不论生死都清楚自己周围的活细胞数，也就是能够得到自己的未来状态了。同时，在通知周围八个邻居的时候，也可以统计出对于本细胞来说的活邻居数，于是本细胞的未来状态也能够得到了。</p>
+<p>于是算法能描述如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1) 在某一次生成本次状态中，有将改变状态的细胞集合 S</span><br><span class="line">2) 遍历集合 S，对于细胞 i：</span><br><span class="line">    改变细胞 i 的状态</span><br><span class="line">    细胞 i 的活邻居数置零</span><br><span class="line">    遍历 8 个邻居细胞，对于邻居细胞 j：</span><br><span class="line">        如果细胞 i 改变后的状态 == 存活，细胞 j 的活邻居数增加 1</span><br><span class="line">        如果细胞 i 改变后的状态 == 死亡，细胞 j 的活邻居数减少 1</span><br><span class="line">        计算细胞 j 的未来状态并记录在将改变状态的细胞集合 S&apos; 中</span><br><span class="line">        如果细胞 j 是活细胞：</span><br><span class="line">            细胞 i 的活邻居数增加 1</span><br><span class="line">    计算细胞 i 的未来状态并记录在将改变状态的细胞集合 S&apos; 中</span><br><span class="line">3)S = S&apos;，重复 1)、2)</span><br></pre></td></tr></table></figure>
+<h2 id="ES6-写起来"><a href="#ES6-写起来" class="headerlink" title="ES6 写起来"></a>ES6 写起来</h2><p>ES6 中有 class 的概念，虽然实现方式其实就是 function 和原型，但是在写的时候就不用像以前用「模拟」的手段来编写啦。</p>
+<h3 id="基本对象"><a href="#基本对象" class="headerlink" title="基本对象"></a>基本对象</h3><p>基本来说，分三个主要对象：提供算法的 class Life，提供单元格绘制的 class Grid，提供 DOM 动画控制的 class Game。Game 从算法中得到需要重绘的单元格，通过 Grid 来绘制单元格。</p>
+<h3 id="class-Life"><a href="#class-Life" class="headerlink" title="class Life"></a>class Life</h3><p>已经有算法描述了，写起来并不复杂。新建一个 <code>life.js</code> 文件，导出 <code>Life</code> 类。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Life</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> ( row, col ) &#123;</span><br><span class="line">    <span class="keyword">this</span>.row = row;</span><br><span class="line">    <span class="keyword">this</span>.column = col;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.generation = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * this.world = &#123;</span></span><br><span class="line"><span class="comment">     *   '0,0':  // 'x,y'</span></span><br><span class="line"><span class="comment">     *   [</span></span><br><span class="line"><span class="comment">     *     1,  // alive 1, dead 0</span></span><br><span class="line"><span class="comment">     *     0,  // count of neighbour</span></span><br><span class="line"><span class="comment">     *   ]</span></span><br><span class="line"><span class="comment">     * &#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">this</span>.world = &#123;&#125;;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * '0,0':  // 'x,y'</span></span><br><span class="line"><span class="comment">     * 1  // to be alive 1, to be dead -1, 0 not change</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">this</span>.changedState = &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>构造函数只需要得到世界（棋盘）的长宽就行了，<code>this.world</code> 记录世界中受关注细胞的状态，<code>this.changedState</code> 记录将要改变状态的细胞。</p>
+<p>算法本体代码，相当于描述 2) 中循环中的操作：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line">_processLife ( x, y, state ) &#123;</span><br><span class="line">  <span class="keyword">let</span> currentCellHash = x + <span class="string">','</span> + y;</span><br><span class="line">  <span class="keyword">if</span> ( <span class="keyword">this</span>.world[currentCellHash] ) &#123;</span><br><span class="line">    <span class="comment">// 根据 state 改变状态</span></span><br><span class="line">    <span class="keyword">this</span>.world[currentCellHash][<span class="number">0</span>] = state ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 如果世界中不存在记录，则肯定是新的活细胞</span></span><br><span class="line">    <span class="keyword">this</span>.world[currentCellHash] = [<span class="number">1</span>, <span class="number">0</span>];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 更新邻居细胞并统计活邻居数</span></span><br><span class="line">  <span class="keyword">let</span> aliveNeighBours = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> neighbours = [</span><br><span class="line">    <span class="comment">// 左边的邻居</span></span><br><span class="line">    [x - <span class="number">1</span>, y - <span class="number">1</span>],</span><br><span class="line">    [x - <span class="number">1</span>, y],</span><br><span class="line">    [x - <span class="number">1</span>, y + <span class="number">1</span>],</span><br><span class="line">    <span class="comment">// 上下邻居</span></span><br><span class="line">    [x, y - <span class="number">1</span>],</span><br><span class="line">    [x, y + <span class="number">1</span>],</span><br><span class="line">    <span class="comment">// 右边的邻居</span></span><br><span class="line">    [x + <span class="number">1</span>, y - <span class="number">1</span>],</span><br><span class="line">    [x + <span class="number">1</span>, y],</span><br><span class="line">    [x + <span class="number">1</span>, y + <span class="number">1</span>],</span><br><span class="line">  ];</span><br><span class="line">  <span class="keyword">let</span> counter = state ? +<span class="number">1</span> : <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 循环 8 个邻居</span></span><br><span class="line">  <span class="keyword">for</span> ( <span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++ ) &#123;</span><br><span class="line">    <span class="keyword">let</span> [nx, ny] = neighbours[i];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 一些世界中的约束</span></span><br><span class="line">    <span class="keyword">if</span> ( <span class="number">0</span> &lt;= nx &amp;&amp; nx &lt; <span class="keyword">this</span>.column &amp;&amp; <span class="number">0</span> &lt;= ny &amp;&amp; ny &lt; <span class="keyword">this</span>.row ) &#123;</span><br><span class="line">      <span class="keyword">let</span> hash = nx + <span class="string">','</span> + ny;</span><br><span class="line">      <span class="keyword">let</span> oldState = <span class="keyword">this</span>.world[hash];</span><br><span class="line"></span><br><span class="line">      <span class="comment">// oldState[0] alive or dead, oldState[1] count of neighbour</span></span><br><span class="line">      <span class="keyword">if</span> ( oldState ) &#123;  <span class="comment">// 邻居已经存在于世界中了</span></span><br><span class="line">        oldState[<span class="number">1</span>] += counter;  <span class="comment">// 更新邻居的邻居数</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 顺便统计活邻居数</span></span><br><span class="line">        <span class="keyword">if</span> ( oldState[<span class="number">0</span>] ) &#123;</span><br><span class="line">          aliveNeighBours++;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;  <span class="comment">// 边缘开拓新的细胞，肯定是死细胞</span></span><br><span class="line">        oldState = <span class="keyword">this</span>.world[hash] = [<span class="number">0</span>, <span class="number">1</span>];</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 计算邻居细胞的未来状态</span></span><br><span class="line">      <span class="keyword">switch</span> ( oldState[<span class="number">1</span>] ) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">8</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">          <span class="keyword">this</span>.changedState[hash] = <span class="number">-1</span>;  <span class="comment">// if alive, then to be dead</span></span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">          <span class="keyword">this</span>.changedState[hash] = <span class="number">1</span>;  <span class="comment">// if dead, then to be alive</span></span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">          <span class="keyword">this</span>.changedState[hash] = <span class="number">0</span>;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 计算当前细胞的未来状态</span></span><br><span class="line">  <span class="keyword">this</span>.world[currentCellHash][<span class="number">1</span>] = aliveNeighBours;</span><br><span class="line">  <span class="keyword">switch</span> ( aliveNeighBours ) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">8</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">      <span class="keyword">this</span>.changedState[currentCellHash] = <span class="number">-1</span>;  <span class="comment">// if alive, then to be dead</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">      <span class="keyword">this</span>.changedState[currentCellHash] = <span class="number">1</span>;  <span class="comment">// if dead, then to be alive</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">      <span class="keyword">this</span>.changedState[currentCellHash] = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2) 的循环其实就是得到下一代的状态：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">nextGeneration () &#123;</span><br><span class="line">  <span class="keyword">let</span> state = <span class="built_in">Object</span>.assign( &#123;&#125;, <span class="keyword">this</span>.changedState );  <span class="comment">// 复制将要改变的状态集以便清空</span></span><br><span class="line">  <span class="keyword">let</span> changedCells = &#123; <span class="number">0</span>: [], <span class="number">1</span>:[] &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// reset next state</span></span><br><span class="line">  <span class="keyword">this</span>.changedState = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 2) 的循环</span></span><br><span class="line">  <span class="keyword">for</span> ( <span class="keyword">let</span> key <span class="keyword">in</span> state ) &#123;</span><br><span class="line">    <span class="keyword">let</span> [x, y] = key.split( <span class="string">','</span> ).map( <span class="function"><span class="params">x</span> =&gt;</span> <span class="built_in">parseInt</span>( x ) );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ( state[key] === <span class="number">1</span> &amp;&amp; ( !<span class="keyword">this</span>.world[key] || <span class="keyword">this</span>.world[key][<span class="number">0</span>] === <span class="number">0</span> ) ) &#123;</span><br><span class="line">      <span class="keyword">this</span>.aliveAt( x, y );  <span class="comment">// 会调用 _processLife( x, y, true )</span></span><br><span class="line">      changedCells[<span class="number">1</span>].push( [x, y] );  <span class="comment">// 记录重绘的细胞</span></span><br><span class="line">    &#125; <span class="keyword">if</span> ( state[key] === <span class="number">-1</span> &amp;&amp; <span class="keyword">this</span>.world[key][<span class="number">0</span>] === <span class="number">1</span> ) &#123;</span><br><span class="line">      <span class="keyword">this</span>.killAt( x, y );  <span class="comment">// 会调用 _processLife( x, y, false )</span></span><br><span class="line">      changedCells[<span class="number">0</span>].push( [x, y] );  <span class="comment">// 记录重绘的细胞</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> changedCells;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其他函数可以在 GiiHub 查看。</p>
+<h3 id="class-Grid"><a href="#class-Grid" class="headerlink" title="class Grid"></a>class Grid</h3><p>确定使用 <code>HTML5</code> 中的 <code>Canvas</code> 元素来绘制整个世界（棋盘），<code>Canvas</code> 元素的操作使用另一个类 <code>C</code>，后面再写。</p>
+<p>新建 <code>grid.js</code> 文件，导出 <code>Grid</code> 类。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Grid</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> ( canvas, row, col, displayScheme, colorScheme ) &#123;</span><br><span class="line">    <span class="keyword">this</span>.view = canvas;</span><br><span class="line">    <span class="keyword">this</span>.canvas = <span class="keyword">new</span> C( canvas );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.displayScheme = displayScheme;</span><br><span class="line">    <span class="keyword">this</span>.colorScheme = colorScheme;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>构造函数要传入 canvas DOM 元素，棋盘的长宽，显示的选项和颜色选项。</p>
+<p>绘制单元格的主要函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">drawCells( redrawCells ) &#123;</span><br><span class="line">  <span class="comment">// draw alive cells</span></span><br><span class="line">  <span class="keyword">this</span>.canvas.setPenColor( <span class="keyword">this</span>.colorScheme.aliveColor );</span><br><span class="line">  <span class="keyword">for</span> ( <span class="keyword">let</span> x, y, i = <span class="number">0</span>, len = redrawCells[<span class="number">1</span>].length; i &lt; len; i++ ) &#123;</span><br><span class="line">    [x, y] = redrawCells[<span class="number">1</span>][i];</span><br><span class="line">    <span class="keyword">this</span>.drawCellAt( x, y );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// draw dead cells</span></span><br><span class="line">  <span class="keyword">this</span>.canvas.setPenColor( <span class="keyword">this</span>.colorScheme.deadColor );</span><br><span class="line">  <span class="keyword">for</span> ( <span class="keyword">let</span> x, y, i = <span class="number">0</span>, len = redrawCells[<span class="number">0</span>].length; i &lt; len; i++ ) &#123;</span><br><span class="line">    [x, y] = redrawCells[<span class="number">0</span>][i];</span><br><span class="line">    <span class="keyword">this</span>.drawCellAt( x, y );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">drawCellAt ( x, y ) &#123;</span><br><span class="line">  <span class="keyword">this</span>.canvas.drawRect(</span><br><span class="line">    x * ( <span class="keyword">this</span>.displayScheme.borderWidth + <span class="keyword">this</span>.displayScheme.cellWidth ),</span><br><span class="line">    y * ( <span class="keyword">this</span>.displayScheme.borderWidth + <span class="keyword">this</span>.displayScheme.cellWidth ),</span><br><span class="line">    <span class="keyword">this</span>.displayScheme.cellWidth,</span><br><span class="line">    <span class="keyword">this</span>.displayScheme.cellWidth );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>drawCells</code> 函数是用来批量画细胞的函数，同样颜色的细胞放在一起画，就不需要频繁改变画笔的颜色。</p>
+<p><code>drawCellAt</code> 函数就是找到单元格的左上角距离 <code>Canvas</code> 元素左上角的距离，距离左边是第 x 个细胞宽度加细胞边框宽度，距离上边也是同样道理。</p>
+<p>其中调用的 <code>setPenColor</code> 和 <code>drawRect</code> 还没有，于是就新增一个 <code>c.js</code> 文件，导出 <code>C</code> 类。其实就是 <code>Canvas</code> 元素的操作的封装而已。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">C</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> ( ele ) &#123;</span><br><span class="line">    <span class="keyword">this</span>.cxt = ele.getContext( <span class="string">'2d'</span> );</span><br><span class="line">    <span class="keyword">this</span>.fillStyle = <span class="string">'#000000'</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  setPenColor ( hex ) &#123;</span><br><span class="line">    <span class="keyword">this</span>.cxt.fillStyle = <span class="keyword">this</span>.fillStyle = <span class="string">'#'</span> + hex;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  drawRect ( ox, oy, width, height ) &#123;</span><br><span class="line">    <span class="keyword">this</span>.cxt.fillRect( ox, oy, width, height );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  clear () &#123;</span><br><span class="line">    <span class="keyword">this</span>.cxt.clearRect( <span class="number">0</span>, <span class="number">0</span>, <span class="keyword">this</span>.cxt.canvas.width, <span class="keyword">this</span>.cxt.canvas.height );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="class-Game"><a href="#class-Game" class="headerlink" title="class Game"></a>class Game</h3><p>不复杂，直接看代码吧。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Life <span class="keyword">from</span> <span class="string">'./life.js'</span>;</span><br><span class="line"><span class="keyword">import</span> Grid <span class="keyword">from</span> <span class="string">'./grid.js'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Game</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> ( canvas, row, col, displayScheme, colorScheme, gps ) &#123;</span><br><span class="line">    <span class="keyword">this</span>.grid = <span class="keyword">new</span> Grid( canvas, row, col, displayScheme, colorScheme );</span><br><span class="line">    <span class="keyword">this</span>.life = <span class="keyword">new</span> Life( row, col );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.speed = <span class="number">1000</span> / gps;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.enable = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">this</span>.running = <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  init ( x ) &#123;</span><br><span class="line">    <span class="keyword">this</span>.stop();</span><br><span class="line">    <span class="keyword">this</span>.life.init( x );</span><br><span class="line">    <span class="keyword">this</span>.grid.init();</span><br><span class="line">    <span class="keyword">this</span>.enable = <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  stop () &#123;</span><br><span class="line">    <span class="keyword">this</span>.running = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">this</span>.enable = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">this</span>.life.reset();</span><br><span class="line">    <span class="keyword">this</span>.grid.claer();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  pause () &#123;</span><br><span class="line">    <span class="keyword">if</span> ( <span class="keyword">this</span>.enable ) &#123;</span><br><span class="line">      <span class="keyword">this</span>.running = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  resume () &#123;</span><br><span class="line">    <span class="keyword">if</span> ( <span class="keyword">this</span>.enable ) &#123;</span><br><span class="line">      <span class="keyword">this</span>.run();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  step () &#123;</span><br><span class="line">    <span class="keyword">if</span> ( <span class="keyword">this</span>.enable ) &#123;</span><br><span class="line">      <span class="comment">// run algorithm</span></span><br><span class="line">      <span class="keyword">let</span> redrawCells = <span class="keyword">this</span>.life.nextGeneration();</span><br><span class="line">      <span class="comment">// redraw cells</span></span><br><span class="line">      <span class="keyword">this</span>.grid.drawCells( redrawCells );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  run () &#123;</span><br><span class="line">    <span class="keyword">if</span> ( <span class="keyword">this</span>.enable &amp;&amp; !<span class="keyword">this</span>.running ) &#123;</span><br><span class="line">      <span class="keyword">this</span>.running = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">let</span> _run = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> ( <span class="keyword">this</span>.running ) &#123;</span><br><span class="line">          <span class="keyword">this</span>.step();</span><br><span class="line">          setTimeout( _run, <span class="keyword">this</span>.speed );</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line"></span><br><span class="line">      setTimeout( _run, <span class="number">0</span> );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>就是一些简单的动画控制方法，跟普通 JavaScript 写起来没什么不同。需要注意的是 <code>enable</code> 状态和 <code>running</code> 状态是不一样的，前者是指整个游戏的响应，后者是指动画的响应。</p>
+<p><code>step</code> 方法是迭代一步，<code>run</code> 方法就是用 <code>setTimeout</code> 来循环调用 <code>step</code> 了。在 <code>run</code> 方法中使用了箭头函数来隐含设定了 <code>this</code> 的值，ES6 的优势就体现出来了。</p>
+<h3 id="gol-js"><a href="#gol-js" class="headerlink" title="gol.js"></a>gol.js</h3><p>整个程序的主体是 Game 的实例，然而还是需要有人去创造一个实例出来，也就是说需要一个工厂函数。于是，新建 <code>gol.js</code> 文件，导出 <code>GOL</code> 类。里面写一个静态方法，用作创建 Game 实例的工厂方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Game <span class="keyword">from</span> <span class="string">'./game.js'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">GOL</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> createGame ( canvas, row, col, options ) &#123;</span><br><span class="line">    <span class="keyword">let</span> param = <span class="built_in">Object</span>.assign( &#123;</span><br><span class="line">      displayScheme: &#123;</span><br><span class="line">        borderWidth: <span class="number">1</span>,</span><br><span class="line">        cellWidth: <span class="number">10</span></span><br><span class="line">      &#125;,</span><br><span class="line">      colorScheme: &#123;</span><br><span class="line">        aliveColor: <span class="string">'000000'</span>,</span><br><span class="line">        deadColor: <span class="string">'FFFFFF'</span>,</span><br><span class="line">        worldColor: <span class="string">'FFFFFF'</span>,</span><br><span class="line">        borderColor: <span class="string">'FFFFFF'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      gps: <span class="number">15</span></span><br><span class="line">    &#125;, options );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Game( canvas, row, col, param.displayScheme, param.colorScheme, param.gps );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不过在 <code>createGame</code> 方法上就不要用 ES6 的语法了，因为方法是要在页面上调用的，目前还没有哪个浏览器完全支持 ES6。但是在方法里面用是没问题的，因为编译器会帮我们转换好。于是可以看到方法里面直接用 <code>Object.assign( des, src )</code> 的函数来合并参数，类似 jQuery 的 <code>extends</code> 函数。</p>
+<h3 id="boot-js"><a href="#boot-js" class="headerlink" title="boot.js"></a>boot.js</h3><p>到此还没完，回忆一下在写普通 JavaScript 库的时候，我们通常会直接包裹上一层适应各种环境的模块注册代码，本人最喜欢就是直接使用 <a href="https://github.com/umdjs/umd" target="_blank" rel="noopener">UMD</a> 了。</p>
+<p>新建 <code>boot.js</code> 文件，执行非 ES6 形式的导出。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> GOL <span class="keyword">from</span> <span class="string">'./gol.js'</span>;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"> root, name, definition </span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> ( <span class="keyword">typeof</span> define === <span class="string">'function'</span> &amp;&amp; define.amd ) &#123;</span><br><span class="line">    define( [], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ( root[name] = definition( root ) );</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> ( <span class="keyword">typeof</span> <span class="built_in">module</span> === <span class="string">'object'</span> &amp;&amp; <span class="built_in">module</span>.exports ) &#123;</span><br><span class="line">    <span class="built_in">module</span>.exports = definition( root );</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    root[name] = definition( root );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)( <span class="built_in">window</span>, <span class="string">'GOL'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"> root </span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> GOL;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="代码打包"><a href="#代码打包" class="headerlink" title="代码打包"></a>代码打包</h2><p>OK，到此代码基本写好了，然而到在浏览器上执行还是有一段距离，主要是基本没有浏览器默认支持 ES6，我们还是需要将 ES6 的代码编译一下以便能放到浏览器上运行。比较有名的编译器就是 <a href="https://github.com/babel/babel" target="_blank" rel="noopener">Babel</a> 和 Google 的 <a href="https://github.com/google/traceur-compiler" target="_blank" rel="noopener">Traceur</a> 了。在编译的同时，还需要将所有文件打包成 bundle。</p>
+<p>在进行了各种尝试之后（包括主流的 npm / browserify / jspm 等），最后发现使用 <code>webpack</code> 和 <code>Babel</code> 的结合是比较理想的。</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>先来把需要的东西都装上。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i --save-dev webpack babel babel-core babel-loader babel-preset-es2015</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>个人其实非常讨厌安装到本地，明明都是可以全局安装的插件和工具。<br>而且每次开一个新的项目就要安装几十 MB 的重复东西实在无聊，npm 本身的树状依赖也是容易造成目录过深的情况。（据说新版 npm 有改善，但是不稳定）<br>个人的解决方法是固定一个开发目录，代码随便迁移。</p>
+</blockquote>
+<h3 id="webpack-config-js"><a href="#webpack-config-js" class="headerlink" title="webpack.config.js"></a>webpack.config.js</h3><p><code>webpack</code> 我就不详细解释了。直接上 <code>webpack.config.js</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: <span class="string">'./src/boot.js'</span>,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: __dirname,</span><br><span class="line">        filename: <span class="string">'./dist/bundle.js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        loaders: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">                loader: <span class="string">'babel'</span>,</span><br><span class="line">                query: &#123;</span><br><span class="line">                    cacheDirectory: <span class="literal">true</span>,</span><br><span class="line">                    presets: [<span class="string">'es2015'</span>]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>目前来说，这样写就能让 <code>Babel</code> 编译 ES6 的代码的同时，也运用 <code>webpack</code> 自己的打包功能 <strong> 根据 ES6 的模块语法 </strong> 将文件都打包成一个 bundle。</p>
+<p>打包出来的代码有点大，压缩一下，再写一个 <code>webpack.config.min.js</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.min.js</span></span><br><span class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">"webpack"</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = exports = <span class="built_in">Object</span>.create(<span class="built_in">require</span>(<span class="string">"./webpack.config.js"</span>));</span><br><span class="line">exports.plugins = [<span class="keyword">new</span> webpack.optimize.UglifyJsPlugin()];</span><br><span class="line">exports.output = <span class="built_in">Object</span>.create(exports.output);</span><br><span class="line">exports.output.filename = exports.output.filename.replace(<span class="regexp">/\.js$/</span>, <span class="string">".min.js"</span>);</span><br></pre></td></tr></table></figure>
+<p>就能用 <code>webpack</code> 自带的压缩插件压缩代码了。</p>
+<h2 id="添加功能"><a href="#添加功能" class="headerlink" title="添加功能"></a>添加功能</h2><p>算法、绘图和动画控制都写好了，但是还不够，缺少了交互，还应该允许方便的自定义世界中的活细胞。比较好的交互方式就是允许通过在世界（棋盘）点击来放置活细胞或者死细胞。</p>
+<p>于是考虑监听 <code>Canvas</code> 元素的 <code>mousedown</code>、<code>mousemove</code> 和 <code>mouseup</code> 事件，做出类似画图那样的效果（每个细胞可以看成是一个像素点）。</p>
+<h3 id="grid-js"><a href="#grid-js" class="headerlink" title="grid.js"></a>grid.js</h3><p>先改造负责绘制的模块。</p>
+<p>在 <code>Grid</code> 类中新增 <code>drawAliveCellAt</code>、<code>drawDeadCellAt</code> 函数，负责独立绘制细胞。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">drawAliveCellAt( x, y ) &#123;</span><br><span class="line">  <span class="keyword">this</span>.canvas.setPenColor( <span class="keyword">this</span>.colorScheme.aliveColor );</span><br><span class="line">  <span class="keyword">this</span>.drawCellAt( x, y );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">drawDeadCellAt( x, y ) &#123;</span><br><span class="line">  <span class="keyword">this</span>.canvas.setPenColor( <span class="keyword">this</span>.colorScheme.deadColor );</span><br><span class="line">  <span class="keyword">this</span>.drawCellAt( x, y );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>新增 <code>on</code>、<code>off</code> 函数，负责绑定监听方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">on ( event, handler ) &#123;</span><br><span class="line">  <span class="keyword">this</span>.view.addEventListener( event, handler, <span class="literal">false</span> );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">off ( event, handler ) &#123;</span><br><span class="line">  <span class="keyword">this</span>.view.removeEventListener( event, handler );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>新增 <code>getXFromPixel</code>、<code>getYFromPixel</code> 函数，负责将像素点转换为单元格位置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">getXFromPixel ( pixel ) &#123;</span><br><span class="line">  <span class="keyword">let</span> d = <span class="keyword">this</span>.displayScheme.borderWidth + <span class="keyword">this</span>.displayScheme.cellWidth;</span><br><span class="line">  <span class="keyword">let</span> x = ~~( ( pixel - <span class="keyword">this</span>.canvas.left ) / d );</span><br><span class="line">  <span class="keyword">return</span> x % d &lt;= <span class="keyword">this</span>.displayScheme.cellWidth ? x : <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getYFromPixel ( pixel ) &#123;</span><br><span class="line">  <span class="keyword">let</span> d = <span class="keyword">this</span>.displayScheme.borderWidth + <span class="keyword">this</span>.displayScheme.cellWidth;</span><br><span class="line">  <span class="keyword">let</span> y = ~~( ( pixel - <span class="keyword">this</span>.canvas.top ) / d );</span><br><span class="line">  <span class="keyword">return</span> y % d &lt;= <span class="keyword">this</span>.displayScheme.cellWidth ? y : <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>~~</code> 是快速取整数。<code>this.canvas.left</code> 和 <code>this.canvas.top</code> 来自于类 <code>C</code> 的实例，因为鼠标点击事件取得的坐标点并非一定是相对于 <code>Canvas</code> 元素的左上角，还要减去 <code>Canvas</code> 元素的边框等。在 <code>c.js</code> 中将构造函数修改一下。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constructor</span> ( ele ) &#123;</span><br><span class="line">  <span class="keyword">this</span>.cxt = ele.getContext( <span class="string">'2d'</span> );</span><br><span class="line">  <span class="keyword">this</span>.fillStyle = <span class="string">'#000000'</span>;</span><br><span class="line">  <span class="keyword">this</span>.left = ele.getBoundingClientRect().left;</span><br><span class="line">  <span class="keyword">this</span>.top = ele.getBoundingClientRect().top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="game-js"><a href="#game-js" class="headerlink" title="game.js"></a>game.js</h3><p>类 <code>Game</code> 的修改有点复杂。先在类的构造函数中增加一个属性，负责记录鼠标状态。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>._mouseState = &#123;</span><br><span class="line">  press: <span class="literal">false</span>,</span><br><span class="line">  lastX: <span class="number">-1</span>,</span><br><span class="line">  lastY: <span class="number">-1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>再增加三个方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">_onMouseDown ( e ) &#123;</span><br><span class="line">  <span class="keyword">this</span>._mouseState.press = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">this</span>._toggleCell( e.clientX, e.clientY );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">_onMouseMove ( e ) &#123;</span><br><span class="line">  <span class="keyword">if</span> ( <span class="keyword">this</span>._mouseState.press ) &#123;</span><br><span class="line">    <span class="keyword">this</span>._toggleCell( e.clientX, e.clientY );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">_onMouseUp ( e ) &#123;</span><br><span class="line">  <span class="keyword">this</span>._mouseState.press = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">this</span>._mouseState.lastX = <span class="keyword">this</span>._mouseState.lastY = <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>鼠标按下，就在鼠标按下的位置改变细胞的状态，并记录鼠标状态为按下。接着如果鼠标弹起，那么就重置鼠标状态；如果鼠标移动并且状态是按下，那么就一直改变路过的细胞的状态。</p>
+<p><code>_toggleCell</code> 方法这样写：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">_toggleCell ( px, py ) &#123;</span><br><span class="line">  <span class="keyword">let</span> x = <span class="keyword">this</span>.grid.getXFromPixel( px );</span><br><span class="line">  <span class="keyword">let</span> y = <span class="keyword">this</span>.grid.getYFromPixel( py );</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> ( x !== <span class="number">-1</span> &amp;&amp; y !== <span class="number">-1</span>  &amp;&amp; ( <span class="keyword">this</span>._mouseState.lastX !== x || <span class="keyword">this</span>._mouseState.lastY !== y ) ) &#123;</span><br><span class="line">    <span class="keyword">this</span>._mouseState.lastX = x;</span><br><span class="line">    <span class="keyword">this</span>._mouseState.lastY = y;</span><br><span class="line">    <span class="keyword">if</span> ( <span class="keyword">this</span>.life.isAlive( x, y ) ) &#123;</span><br><span class="line">      <span class="keyword">this</span>.life.killAt( x, y );</span><br><span class="line">      <span class="keyword">this</span>.grid.drawDeadCellAt( x, y );</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.life.aliveAt( x, y );</span><br><span class="line">      <span class="keyword">this</span>.grid.drawAliveCellAt( x, y );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>大概意思就是先将鼠标的位置转化为单元格位置，再反置此单元格细胞的状态。记录下 <code>lastX</code> 和 <code>lastY</code> 是为了不会循环反置，一定要有坐标变化才反置。</p>
+<p>接下来就是将那三个函数绑定在事件上。新增 <code>_setupLinsteners</code> 函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">_setupLinsteners () &#123;</span><br><span class="line">  <span class="keyword">this</span>.grid.on( <span class="string">'mousedown'</span>, e =&gt; <span class="keyword">this</span>._onMouseDown( e );</span><br><span class="line">  <span class="keyword">this</span>.grid.on( <span class="string">'mousemove'</span>, e =&gt; <span class="keyword">this</span>._onMouseMove( e );</span><br><span class="line">  <span class="keyword">this</span>.grid.on( <span class="string">'mouseup'</span>, e =&gt; <span class="keyword">this</span>._onMouseUp( e );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>虽然使用了箭头函数优雅地绑定了 <code>this</code> 的值，但是这样写并不好，因为没办法解绑了，容易造成内存泄漏。改一下。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">_setupLinsteners () &#123;</span><br><span class="line">  <span class="keyword">this</span>._boundMethod[<span class="string">'_onMouseDown'</span>] = <span class="function"><span class="params">e</span> =&gt;</span> <span class="keyword">this</span>._onMouseDown( e );</span><br><span class="line">  <span class="keyword">this</span>._boundMethod[<span class="string">'_onMouseMove'</span>] = <span class="function"><span class="params">e</span> =&gt;</span> <span class="keyword">this</span>._onMouseMove( e );</span><br><span class="line">  <span class="keyword">this</span>._boundMethod[<span class="string">'_onMouseUp'</span>] = <span class="function"><span class="params">e</span> =&gt;</span> <span class="keyword">this</span>._onMouseUp( e );</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.grid.on( <span class="string">'mousedown'</span>, <span class="keyword">this</span>._boundMethod[<span class="string">'_onMouseDown'</span>] );</span><br><span class="line">  <span class="keyword">this</span>.grid.on( <span class="string">'mousemove'</span>, <span class="keyword">this</span>._boundMethod[<span class="string">'_onMouseMove'</span>] );</span><br><span class="line">  <span class="keyword">this</span>.grid.on( <span class="string">'mouseup'</span>, <span class="keyword">this</span>._boundMethod[<span class="string">'_onMouseUp'</span>] );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">_teardownLinsteners () &#123;</span><br><span class="line">  <span class="keyword">this</span>.grid.off( <span class="string">'mousedown'</span>, <span class="keyword">this</span>._boundMethod[<span class="string">'_onMouseDown'</span>] );</span><br><span class="line">  <span class="keyword">this</span>.grid.off( <span class="string">'mousemove'</span>, <span class="keyword">this</span>._boundMethod[<span class="string">'_onMouseMove'</span>] );</span><br><span class="line">  <span class="keyword">this</span>.grid.off( <span class="string">'mouseup'</span>, <span class="keyword">this</span>._boundMethod[<span class="string">'_onMouseUp'</span>] );</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>._boundMethod = &#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过将匿名函数的引用保存起来就能解绑了。</p>
+<p>最后给个 demo 吧。或者玩玩 <a href="https://exoticknight.github.io/gol.js/" target="_blank" rel="noopener">在线 demo</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;Game of Life&lt;/title&gt;</span><br><span class="line">  &lt;script src=&quot;dist/bundle.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;canvas id=&quot;grid&quot; width=&quot;1000&quot; height=&quot;500&quot; style=&quot;border:1px solid&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">  &lt;button onclick=&quot;test()&quot;&gt;init&lt;/button&gt;</span><br><span class="line">  &lt;button onclick=&quot;g.step()&quot;&gt;setp&lt;/button&gt;</span><br><span class="line">  &lt;button onclick=&quot;g.run()&quot;&gt;run&lt;/button&gt;</span><br><span class="line">  &lt;button onclick=&quot;g.stop()&quot;&gt;stop&lt;/button&gt;</span><br><span class="line">  &lt;button onclick=&quot;g.pause()&quot;&gt;pause&lt;/button&gt;</span><br><span class="line">  &lt;button onclick=&quot;g.resume()&quot;&gt;resume&lt;/button&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">var options = &#123;</span><br><span class="line">  displayScheme: &#123;</span><br><span class="line">    borderWidth: 1,</span><br><span class="line">    cellWidth: 4</span><br><span class="line">  &#125;,</span><br><span class="line">  colorScheme: &#123;</span><br><span class="line">    aliveColor: &apos;000000&apos;,</span><br><span class="line">    deadColor: &apos;efefef&apos;,</span><br><span class="line">    worldColor: &apos;ffffff&apos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">var g=GOL.createGame(document.getElementById(&apos;grid&apos;), 100, 200, options);</span><br><span class="line">function test()&#123;</span><br><span class="line">  g.init([[10,10],[11,10],[10,11],[13,12],[12,13],[13,13]]);</span><br><span class="line">  g.step();</span><br><span class="line">&#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+      
+
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/understanding-ecmascript6-note/" rel="bookmark">《Understanding ECMAScript 6》笔记</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/coolshell-puzzle-game-walkthrough/" rel="bookmark">CoolShell puzzle game 攻略</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/fictioninjection-series-analyze-angular-dependence-injection-and-extract-it-part-1/" rel="bookmark">FictionInjection-始动：Angular 依赖注入分析和源码抽取改造（上）</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/mocha-chai-istanbul-in-es2015/" rel="bookmark">Mocha + Chai + istanbul in ES2015</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/dont-only-use-for-any-more/" rel="bookmark">不要再只会用 for 了</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
+
+    
+    
+    
+
+    
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/images/wechatqcode.jpg" alt="exoticknight wechat" style="width: 200px; max-width: 100%;">
+  <div>扫描关注公众号</div>
+</div>
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>Or buy me a coffee ☕ ？</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.JPG" alt="exoticknight 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.JPG" alt="exoticknight 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>exoticknight</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://blog.e10t.net/write-a-game-of-life-using-es6/" title="使用 ES6 编写一个生命游戏">https://blog.e10t.net/write-a-game-of-life-using-es6/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。图片以及多媒体资料，均属原作者或本人所有。禁止任何形式的转载！</li>
+  <li class="post-copyright-license">
+    授权转载务必保留以上声明和二维码。
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/ECMAScript6/" rel="tag"># ECMAScript6</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/understanding-ecmascript6-note/" rel="next" title="《Understanding ECMAScript 6》笔记">
+                <i class="fa fa-chevron-left"></i> 《Understanding ECMAScript 6》笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/single-bell-2015/" rel="prev" title="クリスマス？なにそれ？美味しいの？">
+                クリスマス？なにそれ？美味しいの？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+  <div class="comments" id="gitalk-container">
+  </div>
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_green.png" alt="exoticknight">
+            
+              <p class="site-author-name" itemprop="name">exoticknight</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/exoticknight" title="GitHub &rarr; https://github.com/exoticknight" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:draco.knight0#gmail.com" title="E-Mail &rarr; mailto:draco.knight0#gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/ExoticknightD" title="Twitter &rarr; https://twitter.com/ExoticknightD" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://instagram.com/exoticknight" title="Instagram &rarr; https://instagram.com/exoticknight" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.linkedin.com/in/liang-weiwen-1877665a/" title="Linkin &rarr; https://www.linkedin.com/in/liang-weiwen-1877665a/" rel="noopener" target="_blank"><i class="fa fa-fw fa-linkin"></i>Linkin</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://garychang.cn" title="http://garychang.cn" rel="noopener" target="_blank">GaryChang 的自留地</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.fyears.org" title="https://www.fyears.org" rel="noopener" target="_blank">Fleeting Years</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#缘起"><span class="nav-number">1.</span> <span class="nav-text">缘起</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#「生命游戏」"><span class="nav-number">2.</span> <span class="nav-text">「生命游戏」</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法思考"><span class="nav-number">2.1.</span> <span class="nav-text">算法思考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6-写起来"><span class="nav-number">3.</span> <span class="nav-text">ES6 写起来</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本对象"><span class="nav-number">3.1.</span> <span class="nav-text">基本对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class-Life"><span class="nav-number">3.2.</span> <span class="nav-text">class Life</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class-Grid"><span class="nav-number">3.3.</span> <span class="nav-text">class Grid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class-Game"><span class="nav-number">3.4.</span> <span class="nav-text">class Game</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gol-js"><span class="nav-number">3.5.</span> <span class="nav-text">gol.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#boot-js"><span class="nav-number">3.6.</span> <span class="nav-text">boot.js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码打包"><span class="nav-number">4.</span> <span class="nav-text">代码打包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-number">4.1.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack-config-js"><span class="nav-number">4.2.</span> <span class="nav-text">webpack.config.js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加功能"><span class="nav-number">5.</span> <span class="nav-text">添加功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#grid-js"><span class="nav-number">5.1.</span> <span class="nav-text">grid.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#game-js"><span class="nav-number">5.2.</span> <span class="nav-text">game.js</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">exoticknight</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">127k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">3:32</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <script id="ribbon" size="300" alpha="0.6" zindex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
+
+
+
+  
+
+
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-reading-progress@1/reading_progress.min.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+  
+  
+
+
+  
+  
+  <script id="dsq-count-scr" src="https://exoticknight.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://blog.e10t.net/write-a-game-of-life-using-es6/";
+    this.page.identifier = "write-a-game-of-life-using-es6/";
+    this.page.title = '使用 ES6 编写一个生命游戏';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://exoticknight.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+  
+</script>
+
+
+
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '7b5ba3d709b068fe8096',
+    clientSecret: 'cc98d542f5437bcd8f57fb632c0978903ed40cb3',
+    repo: 'gitalk-store',
+    owner: 'exoticknight',
+    admin: ['exoticknight'],
+    id: md5(location.pathname),
+    
+      language: window.navigator.language || window.navigator.userLanguage,
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+<script>
+if ($('body').find('pre.mermaid').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdnjs.cloudflare.com/ajax/libs/mermaid/8.0.0/mermaid.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      mermaid.initialize({
+        theme: 'forest',
+        logLevel: 3,
+        flowchart: { curve: 'linear' },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 }
+      });
+    }
+  });
+}
+</script>
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js"></script>
+  <script>
+    
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "box";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook,Linkedin,Reddit,Delicious,Pinterest,Evernote";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+        flOptions.iconStyle = "box";
+      
+        flOptions.boxForm = "horizontal";
+      
+        flOptions.position = "middleRight";
+      
+        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook,Linkedin,Reddit,Delicious,Pinterest,Evernote";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+
+  
+
+  
+
+  
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-bookmark@1/bookmark.min.js"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
